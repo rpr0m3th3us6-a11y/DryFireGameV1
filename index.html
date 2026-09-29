@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dry-Fire Trainer</title>
+  <meta name="description" content="Offline, gamified dry-fire training for laser targets. No account, no tracking.">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dry-Fire">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip" href="#app">Skip to content</a>
+  <main id="app" tabindex="-1"><div class="boot"><p>Loading…</p></div></main>
+  <nav id="tabbar" aria-label="Main">
+    <a href="#/home" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg><span>Home</span></a>
+    <a href="#/tree" data-tab="tree"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a3 3 0 0 1 1 5.83V11h4a2 2 0 0 1 2 2v3.17a3 3 0 1 1-2 0V13h-4v3.17a3 3 0 1 1-2 0V13H7v3.17a3 3 0 1 1-2 0V13a2 2 0 0 1 2-2h4V7.83A3 3 0 0 1 12 2z"/></svg><span>Train</span></a>
+    <a href="#/stats" data-tab="stats"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 20V10h3v10H4zm6.5 0V4h3v16h-3zM17 20v-7h3v7h-3z"/></svg><span>History</span></a>
+    <a href="#/badges" data-tab="badges"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 2h8l-2 6h-4L8 2zm4 7a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13z"/></svg><span>Badges</span></a>
+    <a href="#/settings" data-tab="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm8.4 4.9.1-1.4-.1-1.4 2-1.6-2-3.4-2.4 1a8 8 0 0 0-2.4-1.4L15.2 2h-4l-.4 2.6a8 8 0 0 0-2.4 1.4l-2.4-1-2 3.4 2 1.6L6 12l.1 1.4-2 1.6 2 3.4 2.4-1a8 8 0 0 0 2.4 1.4l.4 2.6h4l.4-2.6a8 8 0 0 0 2.4-1.4l2.4 1 2-3.4-2-1.6z"/></svg><span>Settings</span></a>
+  </nav>
+  <noscript><p style="padding:16px">This app needs JavaScript enabled.</p></noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
