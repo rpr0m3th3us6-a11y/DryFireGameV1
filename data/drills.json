@@ -1,0 +1,5735 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "1.0.0",
+  "meta": {
+    "title": "Dry-Fire Trainer drill library",
+    "notes": "All pars are seconds per string for dry-fire on a laser target at room distance. Multi-shot strings assume a resetting trigger (laser training pistol or trigger-reset device). Edit freely; run `node tools/validate-drills.mjs` after changes."
+  },
+  "tracks": [
+    {
+      "id": "pistol",
+      "name": "Pistol",
+      "summary": "The core tree: fundamentals through integration."
+    },
+    {
+      "id": "ccw",
+      "name": "Concealed Carry",
+      "parent": "pistol",
+      "summary": "Concealment draws and contextual carry. Unlocks after Presentation."
+    },
+    {
+      "id": "rifle",
+      "name": "Rifle",
+      "summary": "Readies, positions, reloads and transitions to pistol."
+    }
+  ],
+  "calibration": {
+    "title": "Baseline",
+    "summary": "Six to nine strings to set your starting point. Shoot them honestly: this only decides which units start unlocked.",
+    "components": [
+      {
+        "drill": "p3-low-ready",
+        "reps": 3
+      },
+      {
+        "drill": "p1-strong-hand",
+        "reps": 2
+      },
+      {
+        "drill": "p3-draw-1-5",
+        "reps": 3,
+        "requires": "holster"
+      }
+    ],
+    "placements": [
+      {
+        "minTier": "gold",
+        "experience": [
+          "advanced"
+        ],
+        "testOut": [
+          "p1-fundamentals",
+          "p2-trigger",
+          "p3-presentation",
+          "p4-reloads"
+        ]
+      },
+      {
+        "minTier": "silver",
+        "experience": [
+          "intermediate",
+          "advanced"
+        ],
+        "testOut": [
+          "p1-fundamentals",
+          "p2-trigger"
+        ]
+      },
+      {
+        "minTier": "bronze",
+        "experience": [
+          "intermediate",
+          "advanced"
+        ],
+        "testOut": [
+          "p1-fundamentals"
+        ]
+      }
+    ]
+  },
+  "units": [
+    {
+      "id": "p1-fundamentals",
+      "track": "pistol",
+      "order": 1,
+      "title": "Safety & Fundamentals",
+      "summary": "Safe dry-fire ritual, stance and grip, a clean trigger press, and sight discipline with one or two hands.",
+      "levels": [
+        {
+          "id": "p1-l1",
+          "title": "Safe Setup & The Press",
+          "drills": [
+            "p1-dry-fire-ritual",
+            "p1-wall-drill"
+          ]
+        },
+        {
+          "id": "p1-l2",
+          "title": "Sights & Grip",
+          "drills": [
+            "p1-surprise-break",
+            "p1-dot-discipline",
+            "p1-grip-reset"
+          ]
+        },
+        {
+          "id": "p1-l3",
+          "title": "One Hand",
+          "drills": [
+            "p1-strong-hand",
+            "p1-weak-hand"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p1-boss",
+        "title": "Fundamentals Test",
+        "summary": "Five-drill benchmark: trigger control, sight discipline, grip, and one-hand shooting.",
+        "components": [
+          {
+            "drill": "p1-wall-drill",
+            "reps": 5
+          },
+          {
+            "drill": "p1-dot-discipline",
+            "reps": 5
+          },
+          {
+            "drill": "p1-grip-reset",
+            "reps": 2
+          },
+          {
+            "drill": "p1-strong-hand",
+            "reps": 3
+          },
+          {
+            "drill": "p1-weak-hand",
+            "reps": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "p2-trigger",
+      "track": "pistol",
+      "order": 2,
+      "title": "Trigger Control & Sight Tracking",
+      "summary": "Track the sights through recoil, prep from reset, hit small targets, and run pairs and strings.",
+      "levels": [
+        {
+          "id": "p2-l1",
+          "title": "Track & Reset",
+          "drills": [
+            "p2-sight-tracking",
+            "p2-reset-prep"
+          ]
+        },
+        {
+          "id": "p2-l2",
+          "title": "Precision at Distance",
+          "drills": [
+            "p2-first-shot-distance",
+            "p2-accuracy-ladder"
+          ]
+        },
+        {
+          "id": "p2-l3",
+          "title": "Pairs & Strings",
+          "drills": [
+            "p2-controlled-pairs",
+            "p2-hammers",
+            "p2-bill-drill"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p2-boss",
+        "title": "Trigger Test",
+        "summary": "Five-drill benchmark: sight tracking, precision, pairs, hammers, and a six-shot string.",
+        "components": [
+          {
+            "drill": "p2-sight-tracking",
+            "reps": 2
+          },
+          {
+            "drill": "p2-first-shot-distance",
+            "reps": 3
+          },
+          {
+            "drill": "p2-controlled-pairs",
+            "reps": 3
+          },
+          {
+            "drill": "p2-hammers",
+            "reps": 3
+          },
+          {
+            "drill": "p2-bill-drill",
+            "reps": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "p3-presentation",
+      "track": "pistol",
+      "order": 3,
+      "title": "Presentation (Draw)",
+      "summary": "Presentation from low and compressed ready, then the open-carry draw down a 2.0 to 1.0 second par ladder.",
+      "levels": [
+        {
+          "id": "p3-l1",
+          "title": "Ready Positions",
+          "drills": [
+            "p3-low-ready",
+            "p3-compressed-ready"
+          ]
+        },
+        {
+          "id": "p3-l2",
+          "title": "The Draw",
+          "drills": [
+            "p3-draw-2-0",
+            "p3-draw-1-5"
+          ]
+        },
+        {
+          "id": "p3-l3",
+          "title": "Draw Standard",
+          "drills": [
+            "p3-draw-9grid",
+            "p3-draw-1-2",
+            "p3-draw-accuracy"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p3-boss",
+        "title": "Presentation Test",
+        "summary": "Five-drill benchmark: both ready positions, the draw at 1.5 and 1.2 seconds, and a draw to a called square.",
+        "components": [
+          {
+            "drill": "p3-low-ready",
+            "reps": 3
+          },
+          {
+            "drill": "p3-compressed-ready",
+            "reps": 3
+          },
+          {
+            "drill": "p3-draw-1-5",
+            "reps": 3
+          },
+          {
+            "drill": "p3-draw-1-2",
+            "reps": 3
+          },
+          {
+            "drill": "p3-draw-9grid",
+            "reps": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "p4-reloads",
+      "track": "pistol",
+      "order": 4,
+      "title": "Reloads & Malfunctions",
+      "summary": "Recognize an empty gun, run speed, tactical, and retention reloads, and clear Type 1, 2, and 3 malfunctions.",
+      "levels": [
+        {
+          "id": "p4-l1",
+          "title": "Empty Gun",
+          "drills": [
+            "p4-slide-lock-reload",
+            "p4-speed-reload"
+          ]
+        },
+        {
+          "id": "p4-l2",
+          "title": "Administrative Reloads",
+          "drills": [
+            "p4-tac-reload",
+            "p4-retention-reload"
+          ]
+        },
+        {
+          "id": "p4-l3",
+          "title": "Malfunctions",
+          "drills": [
+            "p4-tap-rack",
+            "p4-type2",
+            "p4-type3"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p4-boss",
+        "title": "Gun Handling Test",
+        "summary": "Five-drill benchmark: slide-lock and speed reloads, retention reload, tap-rack, and double-feed clearance.",
+        "components": [
+          {
+            "drill": "p4-slide-lock-reload",
+            "reps": 2
+          },
+          {
+            "drill": "p4-speed-reload",
+            "reps": 3
+          },
+          {
+            "drill": "p4-retention-reload",
+            "reps": 2
+          },
+          {
+            "drill": "p4-tap-rack",
+            "reps": 3
+          },
+          {
+            "drill": "p4-type3",
+            "reps": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "p5-transitions",
+      "track": "pistol",
+      "order": 5,
+      "title": "Multi-Target Transitions",
+      "summary": "Eyes-led transitions across the grid and between aim points: box, X, skip-order, failure-to-stop, and El Presidente.",
+      "levels": [
+        {
+          "id": "p5-l1",
+          "title": "Eyes Lead",
+          "drills": [
+            "p5-reference-transition",
+            "p5-box-drill",
+            "p5-x-pattern"
+          ]
+        },
+        {
+          "id": "p5-l2",
+          "title": "Body and Head",
+          "drills": [
+            "p5-fts-circle",
+            "p5-head-box",
+            "p5-skip-diagonal"
+          ]
+        },
+        {
+          "id": "p5-l3",
+          "title": "Under the Clock",
+          "drills": [
+            "p5-el-prez-circle",
+            "p5-random-squares",
+            "p5-el-prez-grid"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p5-boss",
+        "title": "Transition Test",
+        "summary": "Five-drill benchmark: reference transitions, box, failure to stop, random callouts, and El Presidente.",
+        "components": [
+          {
+            "drill": "p5-reference-transition",
+            "reps": 3
+          },
+          {
+            "drill": "p5-box-drill",
+            "reps": 2
+          },
+          {
+            "drill": "p5-fts-circle",
+            "reps": 2
+          },
+          {
+            "drill": "p5-random-squares",
+            "reps": 3
+          },
+          {
+            "drill": "p5-el-prez-circle",
+            "reps": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "p6-movement",
+      "track": "pistol",
+      "order": 6,
+      "title": "Movement & Positions",
+      "summary": "Kneeling, squatting, stepping off line, retreating, and working a doorframe barricade on both sides.",
+      "levels": [
+        {
+          "id": "p6-l1",
+          "title": "Kneeling",
+          "drills": [
+            "p6-kneel-double",
+            "p6-kneel-single"
+          ]
+        },
+        {
+          "id": "p6-l2",
+          "title": "Off the Line",
+          "drills": [
+            "p6-lateral-step",
+            "p6-retreat"
+          ]
+        },
+        {
+          "id": "p6-l3",
+          "title": "Barricade and Entry",
+          "drills": [
+            "p6-barricade-left",
+            "p6-barricade-right",
+            "p6-position-ladder"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p6-boss",
+        "title": "Movement Test",
+        "summary": "Five-drill benchmark: kneel entry, step off line, both sides of cover, and the position ladder.",
+        "components": [
+          {
+            "drill": "p6-kneel-double",
+            "reps": 2
+          },
+          {
+            "drill": "p6-lateral-step",
+            "reps": 3
+          },
+          {
+            "drill": "p6-barricade-left",
+            "reps": 2
+          },
+          {
+            "drill": "p6-barricade-right",
+            "reps": 2
+          },
+          {
+            "drill": "p6-position-ladder",
+            "reps": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "p7-stress",
+      "track": "pistol",
+      "order": 7,
+      "title": "Stress & Decision Making",
+      "summary": "Random calls, shoot/no-shoot decisions, fatigue, and low light: accuracy that holds when the brain is busy.",
+      "levels": [
+        {
+          "id": "p7-l1",
+          "title": "Called Targets",
+          "drills": [
+            "p7-timed-callout",
+            "p7-color-decision"
+          ]
+        },
+        {
+          "id": "p7-l2",
+          "title": "Decide Under the Clock",
+          "drills": [
+            "p7-number-decision",
+            "p7-color-draw-decision"
+          ]
+        },
+        {
+          "id": "p7-l3",
+          "title": "Fatigue and Darkness",
+          "drills": [
+            "p7-burpee-pair",
+            "p7-lowlight",
+            "p7-compound-stress"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "p7-boss",
+        "title": "Stress Test",
+        "summary": "Five-drill benchmark: callouts, color and number decisions, a decision draw, and a fatigue pair.",
+        "components": [
+          {
+            "drill": "p7-timed-callout",
+            "reps": 3
+          },
+          {
+            "drill": "p7-color-decision",
+            "reps": 4
+          },
+          {
+            "drill": "p7-number-decision",
+            "reps": 4
+          },
+          {
+            "drill": "p7-color-draw-decision",
+            "reps": 3
+          },
+          {
+            "drill": "p7-burpee-pair",
+            "reps": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "p8-integration",
+      "track": "pistol",
+      "order": 8,
+      "title": "Integration / Benchmarks",
+      "summary": "Classic standards adapted for dry fire, then full strings that combine the draw, reloads, and transitions.",
+      "levels": [
+        {
+          "id": "p8-l1",
+          "title": "Classic Standards",
+          "drills": [
+            "p8-draw-one",
+            "p8-controlled-pair",
+            "p8-callout-draw"
+          ]
+        },
+        {
+          "id": "p8-l2",
+          "title": "Reload Integration",
+          "drills": [
+            "p8-draw-reload-pair",
+            "p8-reload-transition"
+          ]
+        },
+        {
+          "id": "p8-l3",
+          "title": "Full Strings",
+          "drills": [
+            "p8-box-reload",
+            "p8-circle-reload-fts"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "mancard",
+        "type": "mancard",
+        "title": "Man Card",
+        "summary": "Capstone benchmark. Cold start, one attempt per iteration, no redos."
+      }
+    },
+    {
+      "id": "c1-concealment",
+      "track": "ccw",
+      "order": 1,
+      "title": "Concealment Draw",
+      "summary": "Clear the garment and draw from AIWB, strong-side, and pocket carry, then run the par ladder and the support-hand-only draw.",
+      "requires": [
+        "p3-presentation"
+      ],
+      "levels": [
+        {
+          "id": "c1-l1",
+          "title": "Garment Clear",
+          "drills": [
+            "c1-slow-concealed-draw",
+            "c1-aiwb-first-hit",
+            "c1-jacket-sweep"
+          ]
+        },
+        {
+          "id": "c1-l2",
+          "title": "Carry Methods",
+          "drills": [
+            "c1-pocket-draw",
+            "c1-concealed-pairs"
+          ]
+        },
+        {
+          "id": "c1-l3",
+          "title": "Speed & Support Hand",
+          "drills": [
+            "c1-par-ladder",
+            "c1-support-draw-aiwb",
+            "c1-support-draw-strong"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "c1-boss",
+        "title": "Concealment Qualifier",
+        "summary": "Concealed draws from every carry method you've trained, including one support-hand-only string.",
+        "components": [
+          {
+            "drill": "c1-par-ladder",
+            "reps": 3
+          },
+          {
+            "drill": "c1-pocket-draw",
+            "reps": 2
+          },
+          {
+            "drill": "c1-jacket-sweep",
+            "reps": 2
+          },
+          {
+            "drill": "c1-concealed-pairs",
+            "reps": 2
+          },
+          {
+            "drill": "c1-support-draw-aiwb",
+            "reps": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "c2-contextual",
+      "track": "ccw",
+      "order": 2,
+      "title": "Contextual Carry",
+      "summary": "Seated, moving, contact-distance, and off-body draws, plus verbal commands, no-shoot decisions, and reholster discipline.",
+      "requires": [
+        "c1-concealment"
+      ],
+      "levels": [
+        {
+          "id": "c2-l1",
+          "title": "Seated & Moving",
+          "drills": [
+            "c2-seated-chair",
+            "c2-vehicle-seat",
+            "c2-off-the-x"
+          ]
+        },
+        {
+          "id": "c2-l2",
+          "title": "Contact & Off-Body",
+          "drills": [
+            "c2-retention-fence",
+            "c2-bag-draw"
+          ]
+        },
+        {
+          "id": "c2-l3",
+          "title": "Decisions & Discipline",
+          "drills": [
+            "c2-verbal-command",
+            "c2-no-shoot",
+            "c2-reholster"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "c2-boss",
+        "title": "Everyday Carry Gauntlet",
+        "summary": "Draw from the table, off the X, from the fence, and from the bag, then make no-shoot decisions under the clock.",
+        "components": [
+          {
+            "drill": "c2-seated-chair",
+            "reps": 2
+          },
+          {
+            "drill": "c2-off-the-x",
+            "reps": 2
+          },
+          {
+            "drill": "c2-retention-fence",
+            "reps": 2
+          },
+          {
+            "drill": "c2-bag-draw",
+            "reps": 2
+          },
+          {
+            "drill": "c2-no-shoot",
+            "reps": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "r1-rifle-fundamentals",
+      "track": "rifle",
+      "order": 1,
+      "title": "Rifle: Readies & Positions",
+      "summary": "Low and high ready presentations, a repeatable mount, offhand and kneeling positions, and grid transitions.",
+      "levels": [
+        {
+          "id": "r1-l1",
+          "title": "Readies",
+          "drills": [
+            "r1-low-ready",
+            "r1-high-ready"
+          ]
+        },
+        {
+          "id": "r1-l2",
+          "title": "Mount & Offhand",
+          "drills": [
+            "r1-mount-consistency",
+            "r1-offhand"
+          ]
+        },
+        {
+          "id": "r1-l3",
+          "title": "Kneeling & Grid",
+          "drills": [
+            "r1-kneeling",
+            "r1-grid-transitions"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "r1-boss",
+        "title": "Rifle Fundamentals Check",
+        "summary": "Presentations from both readies, precise offhand and kneeling shots, and a full grid run.",
+        "components": [
+          {
+            "drill": "r1-low-ready",
+            "reps": 3
+          },
+          {
+            "drill": "r1-high-ready",
+            "reps": 3
+          },
+          {
+            "drill": "r1-offhand",
+            "reps": 2
+          },
+          {
+            "drill": "r1-kneeling",
+            "reps": 2
+          },
+          {
+            "drill": "r1-grid-transitions",
+            "reps": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "r2-rifle-manipulation",
+      "track": "rifle",
+      "order": 2,
+      "title": "Rifle: Reloads & Transitions",
+      "summary": "Emergency and retention reloads, rifle immediate action, and slung rifle-to-pistol transitions.",
+      "levels": [
+        {
+          "id": "r2-l1",
+          "title": "Reloads",
+          "drills": [
+            "r2-emergency-reload",
+            "r2-retention-reload"
+          ]
+        },
+        {
+          "id": "r2-l2",
+          "title": "Malfunctions & Transition",
+          "drills": [
+            "r2-tap-rack",
+            "r2-rifle-to-pistol"
+          ]
+        },
+        {
+          "id": "r2-l3",
+          "title": "Transition Under Pressure",
+          "drills": [
+            "r2-transition-grid",
+            "r2-dead-rifle-close"
+          ]
+        }
+      ],
+      "boss": {
+        "id": "r2-boss",
+        "title": "Rifle Manipulation Check",
+        "summary": "Reload, clear, and transition to the pistol on demand without losing the target.",
+        "components": [
+          {
+            "drill": "r2-emergency-reload",
+            "reps": 2
+          },
+          {
+            "drill": "r2-tap-rack",
+            "reps": 2
+          },
+          {
+            "drill": "r2-rifle-to-pistol",
+            "reps": 2
+          },
+          {
+            "drill": "r2-transition-grid",
+            "reps": 2
+          },
+          {
+            "drill": "r2-retention-reload",
+            "reps": 1
+          }
+        ]
+      }
+    }
+  ],
+  "drills": [
+    {
+      "id": "p1-dry-fire-ritual",
+      "title": "Safe Ritual & Grip Set",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "any",
+      "mode": "untimed",
+      "start": "extended",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square to the target with a solid backstop (brick, concrete, or bookcase) behind it. Feet shoulder-width, knees soft."
+      },
+      "objective": "Run the non-negotiable safety ritual that opens every session, then build a high, full-contact grip and fire deliberate verification presses.",
+      "steps": [
+        "Unload, lock the slide, and visually and physically check chamber and magazine well. Move all live ammunition to another room.",
+        "Re-check the chamber a second time, say \"Unloaded\" out loud, and confirm the backstop would stop a round.",
+        "Set the strong hand high on the backstrap, web pressed into the beavertail.",
+        "Fill the gap with the support-hand heel, both thumbs forward; support hand clamps, trigger finger stays loose.",
+        "Lean slightly forward, nose over toes, and extend on center.",
+        "Press one shot without disturbing the grip, then rack or reset and rebuild the grip from scratch for the next rep."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 70,
+        "silver": 85,
+        "gold": 95
+      },
+      "pass": {
+        "accuracy": 70
+      },
+      "safety": "Two chamber checks, no ammunition in the room, and a backstop that would stop a round before the first press. Repeat the ritual after any interruption.",
+      "errors": [
+        "Skipping the second chamber check or keeping ammunition in the room",
+        "Grip too low on the frame, leaving a gap under the beavertail",
+        "Support thumb or palm not in contact with the frame",
+        "Trigger finger tension bleeding into the whole hand"
+      ],
+      "cue": "Two checks, no ammo, then high and tight.",
+      "remedial": null,
+      "tags": [
+        "grip",
+        "trigger",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p1-wall-drill",
+      "title": "Wall Drill",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "any",
+      "mode": "untimed",
+      "start": "extended",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 2,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand an arm length plus a step from a blank wall or the target, muzzle a few inches from the surface."
+      },
+      "objective": "Isolate the trigger press with no target to chase: the front sight or dot must not move when the shot breaks.",
+      "steps": [
+        "Extend to a full two-hand grip with the muzzle close to a blank area of the wall or target.",
+        "Focus hard on the front sight or dot; ignore the background.",
+        "Take up slack to the wall, then press straight to the rear.",
+        "Watch the sight through the break; any dip, push, or twitch is a miss.",
+        "Hold the press to the rear for one full second before resetting.",
+        "Score a hit only if the sight did not move and the laser lands on the aim point."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 70,
+        "silver": 85,
+        "gold": 95
+      },
+      "pass": {
+        "accuracy": 70
+      },
+      "errors": [
+        "Looking at the wall instead of the sight",
+        "Slapping the trigger from off the face",
+        "Milking the grip as the shot breaks",
+        "Releasing the trigger before the follow-through"
+      ],
+      "cue": "Sight still, press straight back.",
+      "remedial": "p1-dry-fire-ritual",
+      "tags": [
+        "trigger",
+        "sight",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p1-surprise-break",
+      "title": "Surprise Break (Solo Ball-and-Dummy)",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "circle",
+      "mode": "untimed",
+      "start": "extended",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square to the circle target, fully extended."
+      },
+      "objective": "Beat anticipation with a steadily building press whose exact break you cannot predict.",
+      "steps": [
+        "Hold the sights on the center ring with a stable grip.",
+        "Take up slack, then add pressure in a smooth, continuous ramp.",
+        "Do not decide when the shot goes; let the break surprise you.",
+        "If you catch yourself pushing or flinching, stop, reset, and restart that shot.",
+        "Call the shot before the laser result registers.",
+        "Log a miss for any shot where you felt a flinch, even if it hit."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 70,
+        "silver": 85,
+        "gold": 95
+      },
+      "pass": {
+        "accuracy": 70
+      },
+      "errors": [
+        "Staging the trigger and then snatching it",
+        "Pre-flinching into the muzzle-down push",
+        "Holding the breath until the sight shakes",
+        "Calling a hit you did not see"
+      ],
+      "cue": "Build pressure, let it surprise you.",
+      "remedial": "p1-wall-drill",
+      "tags": [
+        "trigger",
+        "circle",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p1-dot-discipline",
+      "title": "Dot & Front-Sight Discipline",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "grid",
+      "mode": "untimed",
+      "start": "extended",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square to the grid, fully extended on square 5."
+      },
+      "objective": "Keep visual focus on the front sight (iron) or target (red dot) through the break and see the sight lift.",
+      "steps": [
+        "Aim at square 5.",
+        "Iron sights: hard focus on the front sight. Red dot: focus on the target and let the dot float onto it.",
+        "Press the shot and keep your eyes open through the break.",
+        "Call where the sight was at the moment of the break.",
+        "Hold follow-through until the sight settles back on square 5.",
+        "A called shot must match the laser result to count."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 70,
+        "silver": 85,
+        "gold": 95
+      },
+      "pass": {
+        "accuracy": 70
+      },
+      "errors": [
+        "Shifting focus to the target during the press (irons)",
+        "Chasing the dot wobble instead of accepting the arc",
+        "Blinking at the break",
+        "Dropping the gun to check the result"
+      ],
+      "cue": "See it lift, see it return.",
+      "remedial": "p1-wall-drill",
+      "tags": [
+        "sight",
+        "grid",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p1-grip-reset",
+      "title": "Grip Reset Strings",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square to the target, fully extended on center."
+      },
+      "objective": "Fire five aimed shots while maintaining grip pressure between every shot; no re-gripping mid-string.",
+      "steps": [
+        "Build a full grip and extend on center.",
+        "On the beep, fire five aimed shots at your own cadence.",
+        "Reset the trigger only to the reset point between shots.",
+        "Keep support-hand pressure constant; do not re-seat the hands.",
+        "Follow through on the last shot before lowering."
+      ],
+      "reps": 5,
+      "shots": 5,
+      "par": {
+        "bronze": 6,
+        "silver": 5,
+        "gold": 4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Releasing the trigger fully off the face between shots",
+        "Loosening the support hand after each shot",
+        "Re-gripping mid-string",
+        "Rushing to hit the par at the cost of accuracy"
+      ],
+      "cue": "Same grip, shot one to shot five.",
+      "remedial": "p1-dry-fire-ritual",
+      "tags": [
+        "grip",
+        "trigger",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p1-strong-hand",
+      "title": "Strong Hand Only",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, pistol in strong hand only, muzzle at low ready; support hand clenched at the chest."
+      },
+      "objective": "Deliver accurate single shots from low ready with the strong hand only.",
+      "steps": [
+        "Hold the pistol in the strong hand at low ready; support hand fist to chest.",
+        "On the beep, drive the gun to the target and cant it slightly inboard if needed.",
+        "Lock the wrist and press one shot.",
+        "Follow through and hold on target for one second.",
+        "Return to low ready before the next string."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2,
+        "silver": 1.6,
+        "gold": 1.3
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Limp wrist letting the muzzle dip at the break",
+        "Support hand hanging loose and swinging",
+        "Pushing shots toward the support side",
+        "Using too much finger on the trigger"
+      ],
+      "cue": "Lock the wrist, press straight.",
+      "remedial": "p1-grip-reset",
+      "tags": [
+        "strong-hand",
+        "trigger",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p1-weak-hand",
+      "title": "Support Hand Only",
+      "track": "pistol",
+      "unit": "p1-fundamentals",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, pistol in the support hand only, muzzle at low ready; strong hand fist to the chest."
+      },
+      "objective": "Deliver accurate single shots from low ready with the support hand only.",
+      "steps": [
+        "Transfer the pistol to the support hand at low ready with the finger off the trigger.",
+        "On the beep, drive the gun to the target with a slight inboard cant.",
+        "Close the non-dominant eye if needed and align the sights.",
+        "Press one shot straight to the rear.",
+        "Follow through, then return to low ready."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2.4,
+        "silver": 1.9,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 75
+      },
+      "errors": [
+        "Grip too low on the support-hand frame",
+        "Sympathetic clenching of the free hand",
+        "Heeling or pushing the shot low",
+        "Rushing the press to beat the par"
+      ],
+      "cue": "Slow is smooth on the off hand.",
+      "remedial": "p1-strong-hand",
+      "tags": [
+        "weak-hand",
+        "trigger",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p2-sight-tracking",
+      "title": "Sight Tracking Triples",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, fully extended on center."
+      },
+      "objective": "Watch the sight or dot through the whole cycle (lift, return, next press) on three consecutive shots.",
+      "steps": [
+        "Extend on center with a full grip.",
+        "On the beep, fire three shots at a deliberate one-second cadence.",
+        "Watch the sight lift at each break and track it back to center.",
+        "Only press the next shot once the sight has returned and settled.",
+        "Call all three shots before looking at the result."
+      ],
+      "reps": 6,
+      "shots": 3,
+      "par": {
+        "bronze": 3.5,
+        "silver": 3,
+        "gold": 2.5
+      },
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 80,
+        "silver": 90,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Losing the sight after the break",
+        "Firing the next shot before the sight settles",
+        "Shifting focus between front sight and target",
+        "Uncalled shots"
+      ],
+      "cue": "Track it up, track it home.",
+      "remedial": "p1-dot-discipline",
+      "tags": [
+        "sight",
+        "trigger",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p2-reset-prep",
+      "title": "Reset & Prep",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "any",
+      "mode": "untimed",
+      "start": "extended",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, fully extended on center."
+      },
+      "objective": "Learn to ride the trigger to reset, take up slack immediately, and fire from prep without re-slapping.",
+      "steps": [
+        "Fire the first shot and hold the trigger to the rear.",
+        "Release slowly until you feel and hear the reset; stop there.",
+        "Immediately take up the slack to the wall (prep) while the sight returns.",
+        "Press the next shot from prep with no extra finger movement.",
+        "Repeat for five shots, keeping the finger in contact with the trigger face."
+      ],
+      "reps": 4,
+      "shots": 5,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 80,
+        "silver": 90,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Letting the finger fly off the trigger face",
+        "Overtravel pushing the muzzle",
+        "Waiting at reset instead of prepping",
+        "Slapping from reset"
+      ],
+      "cue": "Reset, prep, press.",
+      "remedial": "p1-grip-reset",
+      "tags": [
+        "trigger",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p2-first-shot-distance",
+      "title": "First Shot at Distance",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "circle",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand at the back of the room. Aim only at the innermost ring to simulate a 15-25 yd target."
+      },
+      "objective": "Deliver a precise first shot from low ready on a small aim point that simulates distance.",
+      "steps": [
+        "Start at low ready with the muzzle below the target.",
+        "Pick the inner ring as the only acceptable hit zone.",
+        "On the beep, press out and let the sights settle before the break.",
+        "Refine the sight picture: perfect alignment, then press.",
+        "Follow through and return to low ready."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 1.9,
+        "silver": 1.5,
+        "gold": 1.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Accepting a sloppy sight picture to beat the par",
+        "Jerking the shot as the sights cross the ring",
+        "Stance too upright",
+        "Aiming at the full target instead of the ring"
+      ],
+      "cue": "Small target, slower press.",
+      "remedial": "p2-sight-tracking",
+      "tags": [
+        "accuracy",
+        "distance",
+        "circle",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p2-accuracy-ladder",
+      "title": "Accuracy Ladder",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 3,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Start at 3 yd. Step back 2 yd after every two strings (3, 5, 7 yd)."
+      },
+      "objective": "Keep every hit inside the called square as simulated distance grows.",
+      "steps": [
+        "Start at low ready, 3 yd from the grid.",
+        "On the beep, fire one shot each on squares 5, 2, 1, 3 in order.",
+        "Re-establish a sight picture on each square; no drive-by shots.",
+        "After two strings, step back to 5 yd; after four, to 7 yd.",
+        "Slow down as distance grows; hits decide the par."
+      ],
+      "reps": 6,
+      "shots": 4,
+      "sequence": [
+        5,
+        2,
+        1,
+        3
+      ],
+      "par": {
+        "bronze": 4.5,
+        "silver": 3.6,
+        "gold": 3
+      },
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 75,
+        "silver": 88,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 75
+      },
+      "errors": [
+        "Swinging past the next square",
+        "Pressing before the sights stop",
+        "Keeping the 3 yd pace at 7 yd",
+        "Stepping back without resetting the stance"
+      ],
+      "cue": "Stop the gun, then press.",
+      "remedial": "p2-first-shot-distance",
+      "tags": [
+        "accuracy",
+        "distance",
+        "grid",
+        "transition"
+      ]
+    },
+    {
+      "id": "p2-controlled-pairs",
+      "title": "Controlled Pairs",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, muzzle at low ready."
+      },
+      "objective": "Fire two shots with a confirmed sight picture for each: see, press, see, press.",
+      "steps": [
+        "Start at low ready.",
+        "On the beep, drive out and press the first shot on a settled sight picture.",
+        "Track the sight back to center and confirm a second sight picture.",
+        "Press the second shot from prep.",
+        "Follow through, then return to low ready."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "par": {
+        "bronze": 1.8,
+        "silver": 1.4,
+        "gold": 1.1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Turning pairs into hammers with no second sight picture",
+        "Slapping the second shot",
+        "Losing grip pressure after shot one",
+        "Stopping follow-through early"
+      ],
+      "cue": "Two shots, two sight pictures.",
+      "remedial": "p2-reset-prep",
+      "tags": [
+        "pairs",
+        "trigger",
+        "sight",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p2-hammers",
+      "title": "Hammers",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 3,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square at close range, muzzle at low ready."
+      },
+      "objective": "Fire two fast shots on one sight picture at close range while grip, not the eyes, controls the second shot.",
+      "steps": [
+        "Start at low ready at 3 yd.",
+        "On the beep, drive out and break the first shot on an acceptable sight picture.",
+        "Reset and press the second shot as soon as the trigger resets.",
+        "Rely on a locked grip to hold the gun on target.",
+        "Return to low ready and reset the grip between strings."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "par": {
+        "bronze": 1.4,
+        "silver": 1.1,
+        "gold": 0.85
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Using hammers at a distance where accuracy suffers",
+        "Weak grip letting the second shot climb",
+        "Pausing for a second sight picture",
+        "Flinching into the second shot"
+      ],
+      "cue": "One look, two shots.",
+      "remedial": "p2-controlled-pairs",
+      "tags": [
+        "pairs",
+        "speed",
+        "grip",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p2-bill-drill",
+      "title": "Bill Drill (Low Ready)",
+      "track": "pistol",
+      "unit": "p2-trigger",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, muzzle at low ready. Circle users: full circle. Grid users: square 5 only."
+      },
+      "objective": "Fire six shots into one zone as fast as you can see acceptable sight pictures.",
+      "steps": [
+        "Start at low ready on the single zone (circle or grid square 5).",
+        "On the beep, drive out and fire six shots.",
+        "Run the trigger at the speed your sights confirm: fast, but on target.",
+        "Keep the grip locked and the stance aggressive.",
+        "Follow through on shot six before lowering."
+      ],
+      "reps": 5,
+      "shots": 6,
+      "par": {
+        "bronze": 3.8,
+        "silver": 3,
+        "gold": 2.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Outrunning the sights and spraying hits outside the zone",
+        "Grip loosening after shot three",
+        "Leaning back as the cadence increases",
+        "Short-stroking the reset"
+      ],
+      "cue": "Drive the gun, run the trigger.",
+      "remedial": "p2-hammers",
+      "tags": [
+        "speed",
+        "trigger",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p3-low-ready",
+      "title": "Presentation from Low Ready",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, muzzle at low ready about 45 degrees down, finger indexed on the frame."
+      },
+      "objective": "Present from low ready straight into the eye-target line and break an accurate first shot.",
+      "steps": [
+        "Start at low ready, eyes on the target, finger indexed.",
+        "On the beep, bring the gun up along the eye-target line.",
+        "Take up slack as the muzzle rises into the target.",
+        "Break the shot as the sights arrive and settle.",
+        "Follow through and return to low ready."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.5,
+        "silver": 1.1,
+        "gold": 0.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Bringing the head down to the gun",
+        "Scooping the muzzle over the target and fishing back down",
+        "Late trigger prep",
+        "Finger in the trigger guard before the muzzle is on target"
+      ],
+      "cue": "Gun to the eyes, not eyes to the gun.",
+      "remedial": "p2-first-shot-distance",
+      "tags": [
+        "low-ready",
+        "speed",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p3-compressed-ready",
+      "title": "Presentation from Compressed Ready",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "any",
+      "mode": "standard",
+      "start": "compressed-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun held in a full two-hand grip close to the sternum, muzzle toward the target."
+      },
+      "objective": "Punch out from compressed ready and break the shot at full extension without a push.",
+      "steps": [
+        "Start with the gun compressed against the chest in a full grip, muzzle on line.",
+        "On the beep, punch the gun straight out along the line of sight.",
+        "Pick up the sights as the arms extend and prep the trigger.",
+        "Break the shot as extension completes.",
+        "Follow through and return to compressed ready."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.5,
+        "silver": 1.15,
+        "gold": 0.85
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Bowling the gun in an arc instead of a straight punch",
+        "Breaking the shot during extension momentum",
+        "Muzzle high at the start",
+        "Shoulders creeping up to the ears"
+      ],
+      "cue": "Straight punch, press on arrival.",
+      "remedial": "p3-low-ready",
+      "tags": [
+        "compressed-ready",
+        "speed",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "p3-draw-2-0",
+      "title": "Draw to First Shot: 2.0",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, hands relaxed at the sides, pistol in the open-carry holster."
+      },
+      "objective": "Groove the four-count draw from the open-carry holster and break an accurate first shot inside 2.0 seconds.",
+      "steps": [
+        "Before timed reps, run five slow four-count draws: grip, clear, rotate and meet, extend and press.",
+        "Stand relaxed with hands at the sides.",
+        "On the beep, establish a full firing grip in the holster before clearing.",
+        "Clear straight up, rotate, meet the support hand at the chest, and extend.",
+        "Prep the trigger during extension and break one shot on a confirmed sight picture.",
+        "Follow through, then look the gun back into the holster slowly."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 2,
+        "silver": 1.7,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only an unloaded pistol and an empty or inert holster setup. Re-verify chamber and magazine well before every session; no live ammunition in the room.",
+      "errors": [
+        "Fishing for the grip after the gun leaves the holster",
+        "Waiting until full extension to find the sights",
+        "Muzzle flagging the support hand",
+        "Hurrying the holster"
+      ],
+      "cue": "Smooth grip, direct path.",
+      "remedial": "p3-compressed-ready",
+      "tags": [
+        "draw",
+        "open-carry",
+        "grip"
+      ]
+    },
+    {
+      "id": "p3-draw-1-5",
+      "title": "Draw to First Shot: 1.5",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, hands relaxed at the sides, pistol in the open-carry holster."
+      },
+      "objective": "Cut the draw to 1.5 seconds without sacrificing a clean first hit.",
+      "steps": [
+        "Stand relaxed with hands at the sides.",
+        "On the beep, drive the strong hand to the gun and the support hand to the chest simultaneously.",
+        "Clear, rotate, and meet the support hand high.",
+        "Pick up the sights early and prep during extension.",
+        "Break the shot as the sights settle, then holster slowly."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.5,
+        "silver": 1.3,
+        "gold": 1.15
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only an unloaded pistol and an empty or inert holster setup. Re-verify chamber and magazine well before every session; no live ammunition in the room.",
+      "errors": [
+        "Wasted motion lifting the elbow high on the draw stroke",
+        "Support hand arriving late",
+        "Breaking the shot before the sights settle",
+        "Tension in the shoulders slowing the first move"
+      ],
+      "cue": "Both hands move at the beep.",
+      "remedial": "p3-draw-2-0",
+      "tags": [
+        "draw",
+        "open-carry",
+        "speed"
+      ]
+    },
+    {
+      "id": "p3-draw-9grid",
+      "title": "Draw to Called Square",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "grid",
+      "mode": "callout",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square to the 3x3 grid, hands relaxed at the sides, pistol in the open-carry holster."
+      },
+      "objective": "Draw to whichever square is called at the beep and deliver an accurate hit on that square.",
+      "steps": [
+        "Stand relaxed with eyes on the center of the grid.",
+        "At the beep, listen for the called square.",
+        "Snap the eyes to that square before the gun leaves the holster.",
+        "Drive the gun to the eyes on that square and press one shot.",
+        "Follow through, then holster slowly."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "callout": {
+        "count": 1,
+        "unique": true,
+        "voice": true
+      },
+      "par": {
+        "bronze": 2,
+        "silver": 1.7,
+        "gold": 1.45
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only an unloaded pistol and an empty or inert holster setup. Re-verify chamber and magazine well before every session; no live ammunition in the room.",
+      "errors": [
+        "Drawing toward center and then correcting",
+        "Eyes arriving on the square after the gun",
+        "Over-swinging on corner squares",
+        "Guessing the square before the call"
+      ],
+      "cue": "Eyes to the square first.",
+      "remedial": "p3-draw-2-0",
+      "tags": [
+        "draw",
+        "open-carry",
+        "grid",
+        "decision"
+      ]
+    },
+    {
+      "id": "p3-draw-1-2",
+      "title": "Draw to First Shot: 1.2",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, hands relaxed at the sides, pistol in the open-carry holster."
+      },
+      "objective": "Deliver a first-shot hit from the open-carry holster at or under the 1.0-1.2 second standard.",
+      "steps": [
+        "Stand relaxed with hands at the sides.",
+        "On the beep, explode into the grip; the first inch of movement is the fastest.",
+        "Take the most direct path from holster to eye-target line.",
+        "Prep the trigger before full extension and break as the sights settle.",
+        "Follow through and holster slowly; never race the holster."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.2,
+        "silver": 1,
+        "gold": 0.85
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only an unloaded pistol and an empty or inert holster setup. Re-verify chamber and magazine well before every session; no live ammunition in the room.",
+      "errors": [
+        "Slow first movement off the beep",
+        "Over-gripping and fumbling the clear",
+        "Pressing before the sights arrive",
+        "Accepting misses to hit the par"
+      ],
+      "cue": "Fast hands, patient trigger.",
+      "remedial": "p3-draw-1-5",
+      "tags": [
+        "draw",
+        "open-carry",
+        "speed"
+      ]
+    },
+    {
+      "id": "p3-draw-accuracy",
+      "title": "Draw Accuracy Under Par",
+      "track": "pistol",
+      "unit": "p3-presentation",
+      "target": "circle",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand at the back of the room. Only the inner ring counts as a hit."
+      },
+      "objective": "Draw and hit the inner ring at simulated distance inside a par, balancing speed and precision.",
+      "steps": [
+        "Stand relaxed with hands at the sides at 7 yd.",
+        "On the beep, draw with the same speed as close-range work.",
+        "Slow down only at the end: refine the sight picture on the inner ring.",
+        "Press the shot straight to the rear.",
+        "Score only inner-ring hits; follow through and holster slowly."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.6,
+        "silver": 1.35,
+        "gold": 1.15
+      },
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 80,
+        "silver": 90,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Only an unloaded pistol and an empty or inert holster setup. Re-verify chamber and magazine well before every session; no live ammunition in the room.",
+      "errors": [
+        "Slowing the whole draw instead of just the final sight picture",
+        "Snatching the trigger to beat the par",
+        "Accepting a wide hit in the outer ring",
+        "Tension in the support hand pushing the gun"
+      ],
+      "cue": "Fast to the target, patient on the ring.",
+      "remedial": "p3-draw-1-5",
+      "tags": [
+        "draw",
+        "open-carry",
+        "accuracy",
+        "distance",
+        "circle"
+      ]
+    },
+    {
+      "id": "p4-slide-lock-reload",
+      "title": "Empty Gun: Slide-Lock Reload",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun extended on target with the slide locked back on an empty training mag. Loaded-weight training mag on the belt."
+      },
+      "objective": "Recognize an empty gun instantly (dead trigger, slide locked) and reload to a hit.",
+      "steps": [
+        "Lock the slide back on an empty training mag and extend on target.",
+        "On the beep, press the trigger and recognize the dead trigger and locked slide.",
+        "Drop the empty mag while the support hand goes to the belt mag.",
+        "Bring the gun into your workspace, seat the fresh mag firmly.",
+        "Release the slide (slide stop or overhand), re-acquire sights, and fire one shot."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 3.2,
+        "silver": 2.6,
+        "gold": 2.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert training magazines and dummy rounds. Re-verify no live ammunition in the room before the first rep and after any break.",
+      "errors": [
+        "Pressing the trigger repeatedly on an empty gun",
+        "Looking down at the mag pouch",
+        "Short-stroking the slide release",
+        "Failing to fully seat the magazine"
+      ],
+      "cue": "Dead trigger means reload now.",
+      "remedial": "p3-compressed-ready",
+      "tags": [
+        "reload",
+        "speed"
+      ]
+    },
+    {
+      "id": "p4-speed-reload",
+      "title": "Speed Reload",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun extended on target with a training mag inserted and slide forward. Second training mag on the belt."
+      },
+      "objective": "Fire one shot, execute a speed reload, and fire one more accurate shot: gun up, 1, reload, 1.",
+      "steps": [
+        "Extend on target with a training mag inserted.",
+        "On the beep, fire one shot.",
+        "Hit the mag release as the support hand moves to the belt mag; let the old mag fall.",
+        "Index the fresh mag with the forefinger along the front and seat it with a firm push.",
+        "Re-establish the grip, reset the trigger, and fire one accurate shot."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "par": {
+        "bronze": 3,
+        "silver": 2.4,
+        "gold": 2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert training magazines and dummy rounds. Re-verify no live ammunition in the room before the first rep and after any break.",
+      "errors": [
+        "Waiting for the mag to drop before going to the belt",
+        "Reloading with the gun too low and out of view",
+        "Missing the mag well and not re-indexing",
+        "Rushing the second shot"
+      ],
+      "cue": "Drop and draw together.",
+      "remedial": "p4-slide-lock-reload",
+      "tags": [
+        "reload",
+        "speed"
+      ]
+    },
+    {
+      "id": "p4-tac-reload",
+      "title": "Tactical Reload",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun on target with a partial training mag inserted. Full training mag on the belt."
+      },
+      "objective": "Top off a partially empty gun during a lull while retaining the partial magazine, then fire a confirming shot.",
+      "steps": [
+        "Extend on target with the partial mag inserted.",
+        "On the beep, bring the gun into your workspace and draw the fresh mag.",
+        "Pinch the fresh mag between index and middle fingers; press the release and catch the partial with thumb and forefinger.",
+        "Insert the fresh mag and seat it firmly.",
+        "Stow the partial mag in a pocket, re-acquire the target, and fire one shot."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 4.5,
+        "silver": 3.8,
+        "gold": 3.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert training magazines and dummy rounds. Re-verify no live ammunition in the room before the first rep and after any break.",
+      "errors": [
+        "Dropping one of the two magazines",
+        "Leaving the gun without a magazine longer than needed",
+        "Returning the partial to the primary mag pouch",
+        "Losing eyes on the threat area"
+      ],
+      "cue": "Fresh in, partial out, stow it.",
+      "remedial": "p4-speed-reload",
+      "tags": [
+        "reload",
+        "grip"
+      ]
+    },
+    {
+      "id": "p4-retention-reload",
+      "title": "Reload with Retention",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun on target with a training mag inserted. Fresh training mag on the belt, a pocket available for the old mag."
+      },
+      "objective": "Remove and retain the old magazine first, then insert a fresh magazine and fire a confirming shot.",
+      "steps": [
+        "Extend on target with the mag inserted.",
+        "On the beep, fire one shot.",
+        "Bring the gun into the workspace; drop the old mag into the support hand and stow it in a pocket.",
+        "Draw the fresh mag from the belt and seat it firmly.",
+        "Re-establish the grip and fire one accurate shot."
+      ],
+      "reps": 6,
+      "shots": 2,
+      "par": {
+        "bronze": 4,
+        "silver": 3.4,
+        "gold": 2.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert training magazines and dummy rounds. Re-verify no live ammunition in the room before the first rep and after any break.",
+      "errors": [
+        "Fumbling the old mag while stowing",
+        "Stowing in the same pouch as fresh mags",
+        "Looking at the pocket instead of keeping eyes up",
+        "Not seating the fresh mag"
+      ],
+      "cue": "Old mag stowed, new mag seated.",
+      "remedial": "p4-speed-reload",
+      "tags": [
+        "reload"
+      ]
+    },
+    {
+      "id": "p4-tap-rack",
+      "title": "Tap-Rack-Assess (Type 1)",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun on target. Insert the training mag without fully seating it, slide forward on an empty chamber."
+      },
+      "objective": "Clear a failure to fire with an immediate tap, rack, and assess, then deliver an accurate shot.",
+      "steps": [
+        "Insert the training mag partially and extend on target.",
+        "On the beep, press the trigger and recognize the click.",
+        "Tap the magazine hard upward to seat it.",
+        "Rack the slide fully to the rear and release with the support hand over the top.",
+        "Assess: re-acquire the sights and fire one shot only if the target still requires it."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2.5,
+        "silver": 2,
+        "gold": 1.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert dummy rounds and empty cases. Re-verify no live ammunition in the room; keep dummies in a separate, clearly marked container.",
+      "errors": [
+        "Pressing the trigger again instead of clearing",
+        "Weak tap that does not seat the mag",
+        "Riding the slide forward",
+        "Firing without re-acquiring the sights"
+      ],
+      "cue": "Click, tap, rack, assess.",
+      "remedial": "p4-speed-reload",
+      "tags": [
+        "malfunction",
+        "speed"
+      ]
+    },
+    {
+      "id": "p4-type2",
+      "title": "Stovepipe Clearance (Type 2)",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag",
+        "dummy-rounds"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun on target with an inert dummy or empty case trapped upright in the ejection port. No dummies: simulate with a sweep."
+      },
+      "objective": "Clear a stovepipe with a tap, rack, or support-hand sweep and deliver an accurate shot.",
+      "steps": [
+        "Trap an inert dummy round or empty case in the ejection port with the slide on it; insert the training mag.",
+        "Extend on target; on the beep, press and recognize the malfunction.",
+        "Tilt the gun slightly toward the ejection port side.",
+        "Sweep the case clear with the support hand while racking, or run tap-rack.",
+        "Re-acquire the sights and fire one shot.",
+        "Without dummies, perform the same sweep-and-rack motion as a simulated clearance."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 3,
+        "silver": 2.4,
+        "gold": 2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert dummy rounds and empty cases. Re-verify no live ammunition in the room; keep dummies in a separate, clearly marked container.",
+      "errors": [
+        "Using a live round or casing from a live-fire session without inspection",
+        "Sweeping in front of the muzzle",
+        "Not tilting the port toward the ground",
+        "Short rack leaving the case in place"
+      ],
+      "cue": "Tilt, sweep, rack, press.",
+      "remedial": "p4-tap-rack",
+      "tags": [
+        "malfunction"
+      ]
+    },
+    {
+      "id": "p4-type3",
+      "title": "Double-Feed Clearance (Type 3)",
+      "track": "pistol",
+      "unit": "p4-reloads",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag",
+        "dummy-rounds"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (about 48 in)",
+        "angle": "square",
+        "position": "Stand square, gun on target. Set up a double feed with two inert dummy rounds: one in the chamber mouth, one riding against it from the mag. Spare training mag on the belt."
+      },
+      "objective": "Clear a double feed with a lock-strip-rack-reload sequence and deliver an accurate shot.",
+      "steps": [
+        "Set up the double feed with inert dummies and extend on target.",
+        "On the beep, press, recognize the stuck slide, and bring the gun into the workspace.",
+        "Lock the slide to the rear and strip the magazine out.",
+        "Rack the slide sharply three times to clear the chamber.",
+        "Insert a fresh magazine, rack to chamber, and fire one shot."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 6,
+        "silver": 4.5,
+        "gold": 3.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Only inert dummy rounds and empty cases. Re-verify no live ammunition in the room; keep dummies in a separate, clearly marked container.",
+      "errors": [
+        "Running tap-rack repeatedly on a double feed",
+        "Failing to lock the slide before stripping the mag",
+        "Reinserting the fouled magazine",
+        "Losing the fresh mag in the process"
+      ],
+      "cue": "Lock, strip, rack, reload.",
+      "remedial": "p4-type2",
+      "tags": [
+        "malfunction",
+        "reload"
+      ]
+    },
+    {
+      "id": "p5-reference-transition",
+      "title": "Reference-to-Target Transition",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "any",
+      "mode": "standard",
+      "start": "high-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared up, feet shoulder width. Place two tape marks on the wall at target height, about 1 yd left and right of the target.",
+        "notes": "Tape marks are aim points only; they do not register. Center square on the grid."
+      },
+      "objective": "Drive the gun from an off-target aim point onto the target and break a clean first shot without overswinging.",
+      "steps": [
+        "Extend and hold a sight picture on the left tape mark.",
+        "At the beep, snap your eyes to the target first.",
+        "Drive the gun to where your eyes are and stop it dead.",
+        "Press as soon as the sights settle; call the shot.",
+        "Alternate left and right tape marks each string."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1,
+        "silver": 0.75,
+        "gold": 0.55
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Gun moves before the eyes",
+        "Overswinging past the target and correcting back",
+        "Slapping the trigger the moment the sights arrive",
+        "Letting the grip loosen during the swing"
+      ],
+      "cue": "Eyes first, gun follows, stop hard.",
+      "remedial": null,
+      "tags": [
+        "transition",
+        "sight",
+        "speed"
+      ]
+    },
+    {
+      "id": "p5-box-drill",
+      "title": "Box Drill 1-3-9-7",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, feet shoulder width, relaxed athletic stance."
+      },
+      "objective": "Run the four corners in order with a single clean shot on each and a hard stop at every square.",
+      "steps": [
+        "Start at low ready, finger off the trigger.",
+        "At the beep, eyes to square 1, present and fire.",
+        "Eyes move to the next corner before the gun does.",
+        "Stop the gun, confirm the sights, press.",
+        "Finish on 7 and hold a follow-through sight picture."
+      ],
+      "reps": 6,
+      "shots": 4,
+      "sequence": [
+        1,
+        3,
+        9,
+        7
+      ],
+      "par": {
+        "bronze": 2.9,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Dragging the gun across the grid and firing on the move",
+        "Skipping the sight check on long vertical legs (3 to 9)",
+        "Losing the trigger reset between squares",
+        "Leading with the shoulders instead of the eyes"
+      ],
+      "cue": "See it, stop it, press it.",
+      "remedial": "p5-reference-transition",
+      "tags": [
+        "transition",
+        "grid",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p5-x-pattern",
+      "title": "X-Pattern Diagonals 1-9-3-7",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, weight slightly forward."
+      },
+      "objective": "Handle full-length diagonal transitions across the grid without overswing on the long legs.",
+      "steps": [
+        "Start at low ready, eyes on square 1.",
+        "At the beep, present to 1 and fire.",
+        "Snap the eyes diagonally to 9; drive the gun and brake early.",
+        "Cross the top to 3, then run the second diagonal to 7.",
+        "Keep the arms locked in one unit; turn from the hips."
+      ],
+      "reps": 6,
+      "shots": 4,
+      "sequence": [
+        1,
+        9,
+        3,
+        7
+      ],
+      "par": {
+        "bronze": 3.1,
+        "silver": 2.5,
+        "gold": 2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Overswinging past the far corner on diagonals",
+        "Breaking the wrists instead of moving the whole platform",
+        "Rushing the long leg and hitting 5 or 6",
+        "Eyes trailing the dot"
+      ],
+      "cue": "Brake before you arrive.",
+      "remedial": "p5-box-drill",
+      "tags": [
+        "transition",
+        "grid",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "p5-fts-circle",
+      "title": "Failure to Stop (Circle)",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "circle",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the circle. Use the center third of the circle as the precise zone for the third shot.",
+        "notes": "The laser registers any hit on the circle; the third shot counts as a hit only if you called it in the center third."
+      },
+      "objective": "Fire a fast body pair, then downshift to a precise third shot with a refined sight picture.",
+      "steps": [
+        "Start at low ready.",
+        "At the beep, present and fire two quick shots on the circle.",
+        "Pause the trigger; tighten the sight picture on the center third.",
+        "Press the third shot deliberately and call it.",
+        "Score the third shot a miss if your call was outside the center third."
+      ],
+      "reps": 6,
+      "shots": 3,
+      "par": {
+        "bronze": 2.3,
+        "silver": 1.8,
+        "gold": 1.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Same speed on all three shots",
+        "Third shot pulled low from anticipation",
+        "Not calling the precise shot honestly",
+        "Slow pair to buy time for the third"
+      ],
+      "cue": "Two fast, then earn the third.",
+      "remedial": "p5-reference-transition",
+      "tags": [
+        "circle",
+        "accuracy",
+        "pairs",
+        "sight"
+      ]
+    },
+    {
+      "id": "p5-head-box",
+      "title": "Head-Box 5-5-2",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid. 5 is the body, 2 is the head."
+      },
+      "objective": "Run the failure-to-stop sequence: body pair on 5, then a precise shot on 2.",
+      "steps": [
+        "Start at low ready.",
+        "At the beep, present to 5 and fire a controlled pair.",
+        "Lift the eyes to 2; the gun follows a short vertical move.",
+        "Refine the sight picture and press.",
+        "Hold follow-through on 2 for a full second."
+      ],
+      "reps": 6,
+      "shots": 3,
+      "sequence": [
+        5,
+        5,
+        2
+      ],
+      "par": {
+        "bronze": 2.3,
+        "silver": 1.8,
+        "gold": 1.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Hitting 1 or 3 on the head shot from lateral drift",
+        "Pair on 5 splitting into 4 or 6",
+        "Moving to 2 before the second body shot breaks",
+        "Trigger slap on the head shot"
+      ],
+      "cue": "Pair, lift, precise.",
+      "remedial": "p5-fts-circle",
+      "tags": [
+        "transition",
+        "grid",
+        "pairs",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "p5-skip-diagonal",
+      "title": "Skip-Order Diagonals",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid. Memorize the order before the beep."
+      },
+      "objective": "Break the habit of sweeping in reading order: skip squares and cut diagonals in a non-adjacent sequence.",
+      "steps": [
+        "Rehearse the order 7-3-4-9-1-6 once at low ready.",
+        "At the beep, present to 7 and fire.",
+        "Cut the diagonal to 3, then drop across to 4.",
+        "Drive diagonally to 9, back to 1, finish on 6.",
+        "Stop the gun completely before every press."
+      ],
+      "reps": 5,
+      "shots": 6,
+      "sequence": [
+        7,
+        3,
+        4,
+        9,
+        1,
+        6
+      ],
+      "par": {
+        "bronze": 3.9,
+        "silver": 3.2,
+        "gold": 2.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Defaulting to an adjacent square from habit",
+        "Forgetting the order mid-string",
+        "Firing while the gun is still moving",
+        "Tension creeping into the grip on later shots"
+      ],
+      "cue": "Know the order, trust the eyes.",
+      "remedial": "p5-x-pattern",
+      "tags": [
+        "transition",
+        "grid",
+        "speed"
+      ]
+    },
+    {
+      "id": "p5-el-prez-circle",
+      "title": "El Presidente (Single Circle)",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "circle",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "right-90",
+        "position": "Stand with the target 90 degrees to your right, hands at shoulder height. Tape aim points 1 yd left (A) and 1 yd right (C) of the circle (B).",
+        "notes": "Adaptation: only the circle (B) registers. Score A and C shots from your called sight picture. Classic version starts facing away; the 90-degree turn keeps the muzzle toward the backstop."
+      },
+      "objective": "Turn, draw, engage three aim points with pairs, reload, and engage them again in reverse.",
+      "steps": [
+        "Hands at shoulder height, target to your right.",
+        "At the beep, turn to face, draw, and fire pairs on A, B, then C.",
+        "Perform a slide-lock reload with the training mag.",
+        "Fire pairs on C, B, then A.",
+        "Enter circle hits as registered; enter tape-mark hits only for shots you called clean."
+      ],
+      "reps": 3,
+      "shots": 12,
+      "par": {
+        "bronze": 10,
+        "silver": 8,
+        "gold": 6.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Turn with the pistol fully holstered and your hand off the gun until you face the backstop.",
+      "errors": [
+        "Drawing during the turn and sweeping the room",
+        "Rushing tape-mark shots because they do not register",
+        "Fumbling the reload by watching the magwell too long",
+        "Losing the pair cadence after the reload"
+      ],
+      "cue": "Turn, then draw. Same pair every time.",
+      "remedial": "p5-fts-circle",
+      "tags": [
+        "transition",
+        "draw",
+        "reload",
+        "circle"
+      ]
+    },
+    {
+      "id": "p5-random-squares",
+      "title": "Random Three-Square Callout",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "callout",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, phone volume up."
+      },
+      "objective": "React to three called squares and engage them in the order given, one shot each.",
+      "steps": [
+        "Start at low ready, eyes on the center of the grid.",
+        "Listen to all three calls; do not move before the first number.",
+        "Present to the first square and fire.",
+        "Transition to the second and third squares in called order.",
+        "Record any wrong-order shot as a miss."
+      ],
+      "reps": 8,
+      "shots": 3,
+      "callout": {
+        "count": 3,
+        "unique": true,
+        "voice": true
+      },
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Moving before processing the call",
+        "Engaging squares in reading order instead of called order",
+        "Forgetting the third call under time pressure",
+        "Soft stops on adjacent squares"
+      ],
+      "cue": "Hear it, see it, hit it.",
+      "remedial": "p5-box-drill",
+      "tags": [
+        "transition",
+        "grid",
+        "decision",
+        "speed"
+      ]
+    },
+    {
+      "id": "p5-el-prez-grid",
+      "title": "El Presidente (Grid)",
+      "track": "pistol",
+      "unit": "p5-transitions",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at eye level",
+        "angle": "right-90",
+        "position": "Stand with the grid 90 degrees to your right, hands at shoulder height. Squares 4, 5 and 6 are the three targets.",
+        "notes": "Classic version starts facing away; the 90-degree turn keeps the muzzle toward the backstop."
+      },
+      "objective": "Classic El Presidente on the grid: pairs on 4-5-6, reload, pairs on 6-5-4.",
+      "steps": [
+        "Hands at shoulder height, grid to your right.",
+        "At the beep, turn, draw, and fire pairs on 4, 5, 6.",
+        "Perform a slide-lock reload with the training mag.",
+        "Fire pairs on 6, 5, 4.",
+        "Hits in the wrong square count as misses."
+      ],
+      "reps": 3,
+      "shots": 12,
+      "sequence": [
+        4,
+        4,
+        5,
+        5,
+        6,
+        6,
+        6,
+        6,
+        5,
+        5,
+        4,
+        4
+      ],
+      "par": {
+        "bronze": 10,
+        "silver": 8,
+        "gold": 6.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Turn with the pistol fully holstered and your hand off the gun until you face the backstop.",
+      "errors": [
+        "Pairs spilling into adjacent squares on short transitions",
+        "Starting the draw mid-turn",
+        "Reload break longer than the whole first half",
+        "Skipping a square on the return sweep"
+      ],
+      "cue": "Short moves, hard stops.",
+      "remedial": "p5-skip-diagonal",
+      "tags": [
+        "transition",
+        "draw",
+        "reload",
+        "grid"
+      ]
+    },
+    {
+      "id": "p6-kneel-double",
+      "title": "Double-Kneel Entry",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at kneeling eye level (about 36 in)",
+        "angle": "square",
+        "position": "Standing squared, clear floor space in front, pad or carpet under the knees."
+      },
+      "objective": "Drop to a stable double kneel and deliver one hit from low ready.",
+      "steps": [
+        "Start standing at low ready, finger straight.",
+        "At the beep, drop both knees as the gun starts up.",
+        "Keep the muzzle on the target line throughout the drop.",
+        "Settle the torso upright, press out, fire one.",
+        "Stand only after the gun is back at low ready."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2.5,
+        "silver": 2,
+        "gold": 1.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Muzzle dipping toward the floor during the drop",
+        "Waiting to present until fully settled",
+        "Leaning back and losing recoil control posture",
+        "Finger entering the trigger guard before the gun is on target"
+      ],
+      "cue": "Drop and drive together.",
+      "remedial": null,
+      "tags": [
+        "kneeling",
+        "position",
+        "movement",
+        "low-ready"
+      ]
+    },
+    {
+      "id": "p6-kneel-single",
+      "title": "Single-Kneel Pair",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at kneeling eye level (about 38 in)",
+        "angle": "square",
+        "position": "Standing squared. Strong-side knee goes down; support elbow may rest just ahead of the support knee."
+      },
+      "objective": "Enter a single kneel and deliver a pair to the body square.",
+      "steps": [
+        "Start standing at low ready.",
+        "At the beep, step back with the strong foot and drop the strong knee.",
+        "Present during the drop; keep the head level.",
+        "Fire a controlled pair on 5.",
+        "Rise and reset only after the gun returns to low ready."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "sequence": [
+        5,
+        5
+      ],
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Bone-on-bone elbow placement (elbow on kneecap) causing wobble",
+        "Stepping forward instead of back and closing distance",
+        "Pair drifting low from a collapsing support arm",
+        "Rushing the drop and landing unstable"
+      ],
+      "cue": "Knee down, head level, press.",
+      "remedial": "p6-kneel-double",
+      "tags": [
+        "kneeling",
+        "position",
+        "grid",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p6-lateral-step",
+      "title": "Step Off Line + Draw",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target with a clear 1 yd lane to both sides."
+      },
+      "objective": "Take one decisive lateral step off the line of attack while drawing, then fire one hit.",
+      "steps": [
+        "Start hands relaxed at your sides.",
+        "At the beep, step laterally (alternate left and right each string).",
+        "Establish your grip during the first step.",
+        "Plant, present, and fire as the sights settle.",
+        "Keep the muzzle on the backstop throughout the step."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 2.2,
+        "silver": 1.8,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Crossing the feet on the step",
+        "Drawing only after the step is finished",
+        "Firing while still in motion before the plant",
+        "Muzzle leaving the backstop on the leftward step"
+      ],
+      "cue": "Move first, gun arrives on the plant.",
+      "remedial": null,
+      "tags": [
+        "movement",
+        "draw",
+        "speed"
+      ]
+    },
+    {
+      "id": "p6-retreat",
+      "title": "Retreat Presentation",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 3,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Start close to the target with at least 2 yd of clear floor behind you. Walk the path first to check for obstacles."
+      },
+      "objective": "Back up two steps while drawing and fire a pair once the gun is on target.",
+      "steps": [
+        "Start close, hands at your sides.",
+        "At the beep, shuffle back with a heel-toe step while drawing.",
+        "Keep the torso forward; do not lean back.",
+        "Fire the pair as you plant on the second step.",
+        "Hold follow-through before stepping forward to reset."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Clear the floor behind you before every session. Shuffle, never cross the feet, and stop if anything is underfoot.",
+      "errors": [
+        "Leaning back and losing balance",
+        "Crossing the feet or stepping heel-first blindly",
+        "Pair breaking while the gun is still rising",
+        "Lifting the feet high instead of a flat shuffle"
+      ],
+      "cue": "Nose over toes, shuffle back.",
+      "remedial": "p6-lateral-step",
+      "tags": [
+        "movement",
+        "draw",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p6-barricade-left",
+      "title": "Doorframe Left",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "barricade",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "barricade-left",
+        "position": "Stand behind a doorframe so the target is visible past its left edge. Keep about an arm length from the frame.",
+        "notes": "Use a doorframe as the barricade. The frame edge should cover most of your body."
+      },
+      "objective": "Shoot around the left side of cover with minimal exposure and no gun contact with the frame.",
+      "steps": [
+        "Stand behind cover at low ready, back from the frame.",
+        "At the beep, lean left from the hips, not by stepping out.",
+        "Present so the gun clears the frame without touching it.",
+        "Fire a pair, then return fully behind cover.",
+        "Check that only the gun and one eye were exposed."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "par": {
+        "bronze": 2.3,
+        "silver": 1.8,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Crowding the frame so the gun contacts it",
+        "Stepping out past cover instead of leaning",
+        "Exposing the whole torso",
+        "Canting the gun and missing low left"
+      ],
+      "cue": "Lean, not step. Gun off the frame.",
+      "remedial": "p6-kneel-double",
+      "tags": [
+        "barricade",
+        "position",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p6-barricade-right",
+      "title": "Doorframe Right Column",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "low-ready",
+      "equipment": [
+        "barricade",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "barricade-right",
+        "position": "Stand behind a doorframe so the grid is visible past its right edge, about an arm length back.",
+        "notes": "Use a doorframe as the barricade. Only the right column needs to be visible."
+      },
+      "objective": "Engage the exposed right column from right-side cover with vertical transitions.",
+      "steps": [
+        "Stand behind cover at low ready.",
+        "At the beep, lean right and present past the frame.",
+        "Fire one on 3, 6, then 9, stopping on each square.",
+        "Keep the lean; do not drift back behind cover mid-string.",
+        "Return behind cover and reset."
+      ],
+      "reps": 6,
+      "shots": 3,
+      "sequence": [
+        3,
+        6,
+        9
+      ],
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Gun resting on or touching the frame",
+        "Sliding left into the middle column",
+        "Over-leaning and losing balance on the low shot",
+        "Exposing the support shoulder"
+      ],
+      "cue": "Stay in the lean, work the column.",
+      "remedial": "p6-barricade-left",
+      "tags": [
+        "barricade",
+        "position",
+        "transition",
+        "grid"
+      ]
+    },
+    {
+      "id": "p6-position-ladder",
+      "title": "Position Ladder",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height standing (compromise height for all positions)",
+        "angle": "square",
+        "position": "Squared with clear floor space and a pad for the knees."
+      },
+      "objective": "Fire from standing, squat, and kneeling in one string with clean position changes.",
+      "steps": [
+        "Start standing at low ready.",
+        "At the beep, present and fire one standing.",
+        "Drop to a deep squat, gun stays on target, fire one.",
+        "Go to a kneel (single or double), fire one.",
+        "Finger off the trigger during every position change."
+      ],
+      "reps": 5,
+      "shots": 3,
+      "par": {
+        "bronze": 5,
+        "silver": 4.2,
+        "gold": 3.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Finger straight and outside the guard on every position change.",
+      "errors": [
+        "Finger on the trigger while changing position",
+        "Gun dropping to the floor line between positions",
+        "Unstable squat with heels lifting",
+        "Long pauses re-acquiring the sights after each change"
+      ],
+      "cue": "Gun stays up, body goes down.",
+      "remedial": "p6-kneel-double",
+      "tags": [
+        "position",
+        "kneeling",
+        "movement"
+      ]
+    },
+    {
+      "id": "p7-timed-callout",
+      "title": "Two-Square Callout",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "grid",
+      "mode": "callout",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, phone volume up."
+      },
+      "objective": "Process two random calls under the clock and engage them in order.",
+      "steps": [
+        "Start at low ready, soft focus on the grid center.",
+        "At the call, eyes go to the first square immediately.",
+        "Present and fire; transition to the second square.",
+        "Wrong-order hits are misses.",
+        "Keep a steady breathing rhythm between strings."
+      ],
+      "reps": 10,
+      "shots": 2,
+      "callout": {
+        "count": 2,
+        "unique": true,
+        "voice": true
+      },
+      "par": {
+        "bronze": 2.3,
+        "silver": 1.8,
+        "gold": 1.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Anticipating the call and guessing a square",
+        "Moving the gun before the eyes find the square",
+        "Engaging the second call first",
+        "Holding the breath through the whole string"
+      ],
+      "cue": "Wait for it, then go.",
+      "remedial": null,
+      "tags": [
+        "stress",
+        "decision",
+        "grid",
+        "transition"
+      ]
+    },
+    {
+      "id": "p7-color-decision",
+      "title": "Shoot / No-Shoot Colors",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "any",
+      "mode": "decision",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target. Phone on a stand below the target so the color flash is in your visual field.",
+        "notes": "The phone shows the color; engage the circle or center square."
+      },
+      "objective": "Fire only on green; hold on red. Build the habit of deciding before pressing.",
+      "steps": [
+        "Start at low ready, eyes on the phone and target together.",
+        "On the flash, present regardless of color.",
+        "Green: fire one. Red: keep the finger straight and hold on target.",
+        "Any shot on red is a no-shoot hit.",
+        "Return to low ready after every string."
+      ],
+      "reps": 12,
+      "shots": 1,
+      "decision": {
+        "kind": "color",
+        "shoot": [
+          "green"
+        ],
+        "noShoot": [
+          "red"
+        ],
+        "noShootRate": 0.3,
+        "shots": 1
+      },
+      "par": {
+        "bronze": 1.7,
+        "silver": 1.3,
+        "gold": 1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Finger on the trigger during the presentation",
+        "Committing to the shot before reading the color",
+        "Hesitating on green after a red call",
+        "Freezing low instead of presenting on red"
+      ],
+      "cue": "Present always, press on green.",
+      "remedial": null,
+      "tags": [
+        "decision",
+        "stress",
+        "trigger"
+      ]
+    },
+    {
+      "id": "p7-number-decision",
+      "title": "Odd Shoot / Even Hold",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "grid",
+      "mode": "decision",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, phone volume up."
+      },
+      "objective": "On an odd number, engage that square. On an even number, present to it and hold.",
+      "steps": [
+        "Start at low ready.",
+        "On the call, drive the eyes and gun to the called square.",
+        "Odd: fire one. Even: finger straight, hold the sight picture.",
+        "A shot on an even square is a no-shoot hit.",
+        "Reset to low ready between strings."
+      ],
+      "reps": 12,
+      "shots": 1,
+      "decision": {
+        "kind": "number",
+        "shoot": [
+          1,
+          3,
+          5,
+          7,
+          9
+        ],
+        "noShoot": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "noShootRate": 0.35,
+        "shots": 1
+      },
+      "par": {
+        "bronze": 2,
+        "silver": 1.6,
+        "gold": 1.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Firing on even numbers from momentum",
+        "Stalling to decide before presenting",
+        "Hitting the adjacent square on the rush",
+        "Finger resting on the trigger during the hold"
+      ],
+      "cue": "Find it, then decide.",
+      "remedial": "p7-timed-callout",
+      "tags": [
+        "decision",
+        "stress",
+        "grid"
+      ]
+    },
+    {
+      "id": "p7-color-draw-decision",
+      "title": "Draw Decision Pair",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "any",
+      "mode": "decision",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target. Phone below the target in your visual field.",
+        "notes": "The phone shows the color; engage the circle or center square."
+      },
+      "objective": "Draw on every call; fire a pair only on green. Red and yellow are no-shoots.",
+      "steps": [
+        "Start with hands at your sides.",
+        "On the flash, draw regardless of color.",
+        "Green: fire a controlled pair.",
+        "Red or yellow: hold on target, finger straight, then holster slowly.",
+        "Never holster with the finger in the guard."
+      ],
+      "reps": 10,
+      "shots": 2,
+      "decision": {
+        "kind": "color",
+        "shoot": [
+          "green"
+        ],
+        "noShoot": [
+          "red",
+          "yellow"
+        ],
+        "noShootRate": 0.4,
+        "shots": 2
+      },
+      "par": {
+        "bronze": 2.4,
+        "silver": 1.9,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Treating yellow as green under time pressure",
+        "Finger entering the guard during the draw stroke",
+        "Slow first shot on green from over-caution",
+        "Rushing the holster after a no-shoot"
+      ],
+      "cue": "Draw on every call, press only on green.",
+      "remedial": "p7-color-decision",
+      "tags": [
+        "decision",
+        "draw",
+        "stress",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p7-burpee-pair",
+      "title": "Burpee Pair",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target with a clear floor area for burpees. A table or shelf within reach to set the pistol on."
+      },
+      "objective": "Deliver an accurate pair with an elevated heart rate and heavy breathing.",
+      "steps": [
+        "Set the pistol down safely, muzzle to the backstop.",
+        "Complete 10 burpees at full speed.",
+        "Pick up the pistol with a full firing grip, finger straight.",
+        "At low ready, take one controlled exhale, then stand by.",
+        "At the beep, present and fire a controlled pair."
+      ],
+      "reps": 5,
+      "shots": 2,
+      "par": {
+        "bronze": 1.9,
+        "silver": 1.5,
+        "gold": 1.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "preRep": "Set the pistol down on the table, muzzle to the backstop. Do 10 burpees. Pick up the pistol, get to low ready, then stand by.",
+      "safety": "Set the pistol down on a table or shelf, muzzle toward the backstop, before any PT. Never exercise with the gun in hand or holstered.",
+      "errors": [
+        "Doing PT with the pistol in hand or holstered",
+        "Rushing the pair to match the racing heart",
+        "Crushing the grip and pulling shots low",
+        "Trying to hold the breath on a winded body"
+      ],
+      "cue": "Heart fast, trigger slow.",
+      "remedial": "p7-color-decision",
+      "tags": [
+        "fatigue",
+        "stress",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p7-lowlight",
+      "title": "Low-Light Flashlight Shot",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Dim the room so the target is hard to see without light. Flashlight in the support hand.",
+        "notes": "Only run this if your laser target registers hits in low light; some camera-based targets need ambient light. Use a handheld flashlight with a tail-cap switch."
+      },
+      "objective": "Find the target with a handheld light and fire one accurate shot using a Harries or neck-index technique.",
+      "steps": [
+        "Start at low ready, light in the support hand, off.",
+        "At the beep, activate the light and illuminate the target.",
+        "Harries: cross the wrists back-to-back under the gun. Or neck index: light at the jaw.",
+        "Present, confirm the sights against the lit target, fire one.",
+        "Light off, then return to low ready."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2.2,
+        "silver": 1.8,
+        "gold": 1.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "lowLight": true,
+      "safety": "Positively identify the target before every press. Never point the pistol where the light is not.",
+      "errors": [
+        "Muzzle following the light while searching",
+        "Light washed out on the sights, losing the front sight",
+        "Pressing before the target is lit",
+        "Weak Harries lock letting the gun wander"
+      ],
+      "cue": "Light, identify, then press.",
+      "remedial": null,
+      "tags": [
+        "lowlight",
+        "stress",
+        "sight"
+      ]
+    },
+    {
+      "id": "p7-compound-stress",
+      "title": "Compound Stress Callout",
+      "track": "pistol",
+      "unit": "p7-stress",
+      "target": "grid",
+      "mode": "callout",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, phone volume up, clear floor for PT, table within reach."
+      },
+      "objective": "Under fatigue, draw and engage three random called squares in order.",
+      "steps": [
+        "Set the pistol down safely before the PT.",
+        "Complete 10 burpees, then holster and stand by.",
+        "At the beep, listen to all three calls while drawing.",
+        "Engage the squares in called order, one shot each.",
+        "Wrong-order hits are misses. Holster slowly between strings."
+      ],
+      "reps": 4,
+      "shots": 3,
+      "callout": {
+        "count": 3,
+        "unique": true,
+        "voice": true
+      },
+      "par": {
+        "bronze": 3.4,
+        "silver": 2.8,
+        "gold": 2.3
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "preRep": "Set the pistol down on the table, muzzle to the backstop. Do 10 burpees. Pick up the pistol, holster it, hands at your sides, then stand by.",
+      "safety": "Set the pistol down on a table or shelf, muzzle toward the backstop, before any PT. Never exercise with the gun in hand or holstered.",
+      "errors": [
+        "Exercising with the pistol holstered",
+        "Forgetting the call order under fatigue",
+        "Fumbling the grip on the draw with sweaty hands",
+        "Holstering fast while winded"
+      ],
+      "cue": "Slow is smooth when you are gassed.",
+      "remedial": "p7-timed-callout",
+      "tags": [
+        "fatigue",
+        "stress",
+        "decision",
+        "draw",
+        "grid"
+      ]
+    },
+    {
+      "id": "p8-draw-one",
+      "title": "Draw + 1 (Simulated 7 yd)",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target at the longest distance your room allows, up to 7 yd.",
+        "notes": "At shorter distances the target is easier; if your system allows, shrink the circle or use one grid square to keep a 7 yd standard."
+      },
+      "objective": "The foundational standard: one clean hit from the holster on a random beep.",
+      "steps": [
+        "Hands relaxed at your sides.",
+        "At the beep, obtain a full firing grip in the holster.",
+        "Draw, rotate, meet the support hand at the chest.",
+        "Press out; begin the trigger press as the gun extends.",
+        "Fire one, follow through, reholster slowly."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": {
+        "bronze": 1.7,
+        "silver": 1.4,
+        "gold": 1.1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Incomplete grip in the holster",
+        "Bowling or fishing the gun on the way out",
+        "Waiting for full extension before prepping the trigger",
+        "Speed-holstering after the shot"
+      ],
+      "cue": "Grip right, press straight.",
+      "remedial": null,
+      "tags": [
+        "draw",
+        "speed",
+        "distance"
+      ]
+    },
+    {
+      "id": "p8-controlled-pair",
+      "title": "Controlled Pair from Holster",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target."
+      },
+      "objective": "Draw and fire two shots, each with its own confirmed sight picture.",
+      "steps": [
+        "Hands relaxed at your sides.",
+        "At the beep, draw and fire the first shot.",
+        "Reset the trigger as the sights return.",
+        "See the sights settle a second time, then press.",
+        "Follow through, then reholster."
+      ],
+      "reps": 10,
+      "shots": 2,
+      "par": {
+        "bronze": 2.1,
+        "silver": 1.7,
+        "gold": 1.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 90
+      },
+      "errors": [
+        "Double-tap without seeing the second sight picture",
+        "Riding the trigger too far forward on reset",
+        "Slow second shot from re-gripping",
+        "Anticipating the reset device click"
+      ],
+      "cue": "Two shots, two sight pictures.",
+      "remedial": "p8-draw-one",
+      "tags": [
+        "draw",
+        "pairs",
+        "sight"
+      ]
+    },
+    {
+      "id": "p8-callout-draw",
+      "title": "Draw to Called Squares",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "grid",
+      "mode": "callout",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, phone volume up."
+      },
+      "objective": "Draw on the call and engage two random squares in order.",
+      "steps": [
+        "Hands relaxed at your sides.",
+        "At the call, grip and draw immediately; process the squares during the draw.",
+        "Fire on the first square, transition, fire on the second.",
+        "Wrong-order hits are misses.",
+        "Reholster slowly."
+      ],
+      "reps": 8,
+      "shots": 2,
+      "callout": {
+        "count": 2,
+        "unique": true,
+        "voice": true
+      },
+      "par": {
+        "bronze": 2.6,
+        "silver": 2.1,
+        "gold": 1.7
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Delaying the draw until the second call is heard",
+        "Presenting to the grid center and then searching",
+        "Overswinging on non-adjacent squares",
+        "Grip shifting on the transition"
+      ],
+      "cue": "Draw on the first word.",
+      "remedial": "p8-draw-one",
+      "tags": [
+        "draw",
+        "transition",
+        "grid",
+        "decision"
+      ]
+    },
+    {
+      "id": "p8-draw-reload-pair",
+      "title": "Draw, Reload, Pair",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "any",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the target. Pistol holstered with an empty magazine seated, training mag on the belt."
+      },
+      "objective": "Draw and fire one, perform a slide-lock reload, then fire a controlled pair.",
+      "steps": [
+        "Hands at your sides, spare mag on the belt.",
+        "At the beep, draw and fire one.",
+        "Drop the mag, bring the gun into your workspace, seat the fresh mag.",
+        "Rack or release the slide and drive back out.",
+        "Fire a controlled pair."
+      ],
+      "reps": 6,
+      "shots": 3,
+      "par": {
+        "bronze": 4.8,
+        "silver": 3.9,
+        "gold": 3.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Lowering the gun to the waist to reload",
+        "Looking at the mag pouch instead of the magwell",
+        "Failing to fully seat the magazine",
+        "Rushing the pair after the reload"
+      ],
+      "cue": "Gun in the workspace, eyes on the magwell.",
+      "remedial": "p8-controlled-pair",
+      "tags": [
+        "draw",
+        "reload",
+        "pairs"
+      ]
+    },
+    {
+      "id": "p8-reload-transition",
+      "title": "Pair, Reload, Transition Pair",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, spare training mag on the belt."
+      },
+      "objective": "Draw to a pair on 4, reload, and transition to a pair on 6.",
+      "steps": [
+        "Hands at your sides.",
+        "At the beep, draw and fire a pair on 4.",
+        "Perform a slide-lock reload while eyes move to 6.",
+        "Drive the gun to 6 and fire a pair.",
+        "Hits outside the called square are misses."
+      ],
+      "reps": 5,
+      "shots": 4,
+      "sequence": [
+        4,
+        4,
+        6,
+        6
+      ],
+      "par": {
+        "bronze": 5,
+        "silver": 4.1,
+        "gold": 3.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Eyes staying on the gun during the reload",
+        "Returning to 4 after the reload",
+        "Pair on 6 spilling into 5",
+        "Reload performed at the belt line"
+      ],
+      "cue": "Reload with your hands, look with your eyes.",
+      "remedial": "p8-draw-reload-pair",
+      "tags": [
+        "draw",
+        "reload",
+        "transition",
+        "grid"
+      ]
+    },
+    {
+      "id": "p8-box-reload",
+      "title": "Box, Reload, Reverse Box",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "grid",
+      "mode": "sequence",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at eye level",
+        "angle": "square",
+        "position": "Squared to the grid, spare training mag on the belt."
+      },
+      "objective": "Draw, run the box drill, reload, and run it in reverse.",
+      "steps": [
+        "Hands at your sides.",
+        "At the beep, draw and fire one each on 1, 3, 9, 7.",
+        "Slide-lock reload while holding eyes on 7.",
+        "Fire one each on 7, 9, 3, 1.",
+        "Stop the gun on every square."
+      ],
+      "reps": 4,
+      "shots": 8,
+      "sequence": [
+        1,
+        3,
+        9,
+        7,
+        7,
+        9,
+        3,
+        1
+      ],
+      "par": {
+        "bronze": 7.5,
+        "silver": 6.2,
+        "gold": 5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Sloppy corners from rushing to the reload",
+        "Losing track of the reverse order",
+        "Reload fumble killing the time",
+        "Overswinging on the long 3-to-9 leg"
+      ],
+      "cue": "Box, reload, box. No wasted motion.",
+      "remedial": "p8-reload-transition",
+      "tags": [
+        "draw",
+        "reload",
+        "transition",
+        "grid"
+      ]
+    },
+    {
+      "id": "p8-circle-reload-fts",
+      "title": "Pair, Reload, Failure to Stop",
+      "track": "pistol",
+      "unit": "p8-integration",
+      "target": "circle",
+      "mode": "standard",
+      "start": "holster",
+      "equipment": [
+        "holster",
+        "training-mag",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Center at chest height",
+        "angle": "square",
+        "position": "Squared to the circle, spare training mag on the belt. The center third of the circle is the precise zone.",
+        "notes": "The third post-reload shot counts only if called in the center third."
+      },
+      "objective": "Draw to a pair, reload, then a failure-to-stop: pair plus one precise shot.",
+      "steps": [
+        "Hands at your sides.",
+        "At the beep, draw and fire a pair.",
+        "Perform a slide-lock reload.",
+        "Fire a fast pair, then one precise shot on the center third.",
+        "Score the precise shot honestly from your call."
+      ],
+      "reps": 5,
+      "shots": 5,
+      "par": {
+        "bronze": 5.6,
+        "silver": 4.6,
+        "gold": 3.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Precise shot rushed at pair speed",
+        "Reload performed low and out of view",
+        "Loose grip after seating the mag",
+        "Dishonest call on the precise shot"
+      ],
+      "cue": "Fast pair, reload, earn the last one.",
+      "remedial": "p8-draw-reload-pair",
+      "tags": [
+        "draw",
+        "reload",
+        "circle",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "c1-slow-concealed-draw",
+      "title": "Slow-Motion Concealed Draw",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "any",
+      "mode": "untimed",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun AIWB under an untucked shirt, hands relaxed at your sides."
+      },
+      "objective": "Build a clean two-hand garment clear and a correct AIWB draw stroke at slow speed before adding the clock.",
+      "steps": [
+        "Support hand grabs the shirt hem low and rips it straight up to the sternum.",
+        "Strong hand drives down onto the grip with a full firing grip while the shirt is pinned high.",
+        "Extract straight up, rotate the muzzle to the target at the pectoral line.",
+        "Support hand leaves the garment and meets the gun at the chest; press out together.",
+        "Press as the sights settle on target; call the shot.",
+        "Hold for one second, then recover to compressed ready."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 80,
+        "silver": 90,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Finger stays straight along the frame until the sights are on target. Keep the support hand and garment above the muzzle line during extraction.",
+      "errors": [
+        "Grabbing the shirt too high so it falls back over the gun",
+        "Fishing for the grip instead of driving to a full firing grip",
+        "Support hand crossing in front of the muzzle on the way to the gun",
+        "Finger entering the guard before the gun reaches the target"
+      ],
+      "cue": "Shirt up, grip down, gun out.",
+      "remedial": null,
+      "tags": [
+        "concealed",
+        "draw",
+        "freestyle",
+        "garment"
+      ]
+    },
+    {
+      "id": "c1-aiwb-first-hit",
+      "title": "AIWB Draw to First Hit",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "circle",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun AIWB under an untucked shirt, hands at your sides or natural interview position."
+      },
+      "objective": "Draw from appendix under an untucked shirt with a two-hand garment clear and break one clean shot inside par.",
+      "steps": [
+        "At the beep, support hand clears the shirt up to the sternum.",
+        "Strong hand acquires a full firing grip, thumb high, finger straight.",
+        "Extract, rotate, and meet the support hand at the chest.",
+        "Press out and prep the trigger as the gun extends.",
+        "Break the shot as the dot or front sight settles in the circle.",
+        "Follow through, then scan before recovering."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.2,
+        "silver": 1.8,
+        "gold": 1.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Blade the hips on reholster; keep the garment and fingers clear of the holster mouth.",
+      "errors": [
+        "Half-clearing the shirt and snagging the grip",
+        "Slow support-hand pickup after the garment clear",
+        "Rushing the press before the sights settle",
+        "Looking down at the holster instead of the target"
+      ],
+      "cue": "Clear hard, grip once.",
+      "remedial": "c1-slow-concealed-draw",
+      "tags": [
+        "concealed",
+        "draw",
+        "freestyle",
+        "garment",
+        "circle"
+      ]
+    },
+    {
+      "id": "c1-jacket-sweep",
+      "title": "Open-Front Garment Sweep",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "grid",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun strong-side IWB or OWB at 3-4 o'clock under an open-front jacket or overshirt."
+      },
+      "objective": "Clear an open-front cover garment with a one-hand strong-side sweep and hit the box (square 5).",
+      "steps": [
+        "At the beep, strong hand forms a blade, fingertips touching the torso at the belly button.",
+        "Sweep rearward along the body to throw the garment behind the gun.",
+        "Drive straight down onto the grip as the garment clears.",
+        "Draw, rotate at the hip, and meet the support hand at the chest.",
+        "Press out and fire one shot on square 5.",
+        "Follow through; recover and repeat."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.3,
+        "silver": 1.9,
+        "gold": 1.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Keep the support hand high on the chest during the draw so it never crosses the muzzle. Check the jacket hem and drawstrings are clear before reholstering.",
+      "errors": [
+        "Sweeping too low so the jacket hem falls back over the grip",
+        "Sweeping too far away from the body (no contact = no clear)",
+        "Losing the grip because the garment is trapped under the hand",
+        "Support hand wandering toward the holster"
+      ],
+      "cue": "Sweep flat, drive down.",
+      "remedial": "c1-slow-concealed-draw",
+      "tags": [
+        "concealed",
+        "draw",
+        "freestyle",
+        "garment",
+        "grid"
+      ]
+    },
+    {
+      "id": "c1-pocket-draw",
+      "title": "Pocket Carry Draw",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "any",
+      "mode": "standard",
+      "start": "pocket",
+      "equipment": [
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, pocket pistol in a pocket holster in the front strong-side pocket, hand out of the pocket."
+      },
+      "objective": "Get a full grip inside the pocket and extract without the holster coming with the gun.",
+      "steps": [
+        "At the beep, strong hand enters the pocket flat, web of the hand high on the backstrap.",
+        "Establish the firing grip inside the pocket, finger straight along the frame.",
+        "Extract up and slightly rearward; the holster's hook stays in the pocket.",
+        "Rotate to the target and meet the support hand at the chest.",
+        "Press out and fire one shot.",
+        "Follow through, then reholster by removing the holster, seating the gun, and returning both to the pocket."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.5,
+        "silver": 2,
+        "gold": 1.7
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "The pocket holster must stay in the pocket; if it comes out on the gun, stop and fix the holster. Reholster by putting the gun into the holster outside the pocket, then pocket both.",
+      "errors": [
+        "Entering the pocket with a partial grip and adjusting on the way out",
+        "Holster coming out with the gun",
+        "Pulling straight up and snagging the front sight on the pocket lip",
+        "Keeping stuff in the gun pocket"
+      ],
+      "cue": "Grip in the pocket, not after.",
+      "remedial": null,
+      "tags": [
+        "pocket",
+        "draw",
+        "concealed",
+        "freestyle"
+      ]
+    },
+    {
+      "id": "c1-concealed-pairs",
+      "title": "Concealed Draw to a Pair",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "grid",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun AIWB or strong-side under your normal carry garment."
+      },
+      "objective": "Draw from concealment and fire two controlled shots on square 5, managing the reset between them.",
+      "steps": [
+        "At the beep, clear the garment with your carry-method technique.",
+        "Draw and press out with the trigger prepped.",
+        "Fire the first shot on the first acceptable sight picture.",
+        "Reset only as far as the trigger needs and fire the second on the return.",
+        "Both shots must be in square 5 to count as hits.",
+        "Follow through and scan."
+      ],
+      "reps": 6,
+      "shots": 2,
+      "par": {
+        "bronze": 2.6,
+        "silver": 2.1,
+        "gold": 1.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Blade the hips on reholster; keep the garment and fingers clear of the holster mouth.",
+      "errors": [
+        "Slapping the trigger on shot two",
+        "Riding the reset so long the split balloons",
+        "Dropping the gun after shot one to look",
+        "Garment clear degrading because focus is on the pair"
+      ],
+      "cue": "See it settle, press again.",
+      "remedial": "c1-jacket-sweep",
+      "tags": [
+        "concealed",
+        "draw",
+        "freestyle",
+        "pairs",
+        "trigger",
+        "grid"
+      ]
+    },
+    {
+      "id": "c1-par-ladder",
+      "title": "Concealment Par Ladder",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "any",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square in your normal carry setup and daily clothes."
+      },
+      "objective": "Drive the concealed draw-to-first-hit toward a 1.2-second standard without sacrificing the hit.",
+      "steps": [
+        "Run the first two reps at a pace you know you can hit.",
+        "Each subsequent rep, push only the part of the draw that was slowest.",
+        "Clear the garment and grip in one motion; no pause at the holster.",
+        "Break the shot on the first acceptable sight picture.",
+        "If you miss, back off one step in speed on the next rep.",
+        "Log which phase felt slow."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 1.7,
+        "silver": 1.4,
+        "gold": 1.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Speed never goes into the reholster. Blade the hips, look the gun in, and keep the garment clear of the holster mouth.",
+      "errors": [
+        "Pushing speed in every phase at once and losing the grip",
+        "Pausing at full extension to confirm the sights",
+        "Garment clear shortening as speed increases",
+        "Tensing the shoulders before the beep"
+      ],
+      "cue": "Fast is smooth with no pauses.",
+      "remedial": "c1-aiwb-first-hit",
+      "tags": [
+        "concealed",
+        "draw",
+        "freestyle",
+        "speed"
+      ]
+    },
+    {
+      "id": "c1-support-draw-aiwb",
+      "title": "Support-Hand Draw: AIWB",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "circle",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun AIWB, strong arm pinned to your chest (simulated injury)."
+      },
+      "objective": "Draw an appendix-carried pistol with the support hand only and fire one accurate shot.",
+      "steps": [
+        "Tuck the strong arm to the chest, out of the path of the muzzle.",
+        "At the beep, support hand clears the shirt up and pins it with the thumb or forearm.",
+        "Reach across and grip the gun as high as the holster allows, finger straight.",
+        "Extract straight up, then rotate the muzzle toward the target below the chest line.",
+        "Settle a one-hand grip, cant slightly inboard if that is your standard, and press out.",
+        "Fire one shot in the circle; follow through."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 3.5,
+        "silver": 2.9,
+        "gold": 2.4
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 75
+      },
+      "safety": "Only train this if your holster lets the support hand extract without the muzzle crossing your body or the pinned arm. Touch or manipulate the holster (claw, wing, retention) only if its design allows it; the finger stays out of the guard and off the holster mouth.",
+      "errors": [
+        "Muzzle crossing the pinned strong arm during extraction",
+        "Rotating the gun before it clears the holster",
+        "Taking a low grip and firing with a poor hold",
+        "Shirt falling back and trapping the hand"
+      ],
+      "cue": "Up, out, then turn.",
+      "remedial": "c1-slow-concealed-draw",
+      "tags": [
+        "concealed",
+        "draw",
+        "weak-hand",
+        "garment",
+        "circle"
+      ]
+    },
+    {
+      "id": "c1-support-draw-strong",
+      "title": "Support-Hand Draw: Strong Side",
+      "track": "ccw",
+      "unit": "c1-concealment",
+      "target": "grid",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun strong-side IWB/OWB at 3-4 o'clock, strong arm pinned to your chest."
+      },
+      "objective": "Retrieve a strong-side pistol with the support hand, regrip safely, and hit square 5.",
+      "steps": [
+        "Pin the strong arm high; turn the strong hip forward slightly to bring the gun within reach.",
+        "At the beep, support hand clears the garment and reaches across the front of the belt.",
+        "Grip the backstrap with the fingers (inverted grip) and extract straight up.",
+        "Point the muzzle at the ground in front of you, not at your legs.",
+        "Brace the gun against your thigh or belt with the muzzle downrange, and regrip to a firing grip.",
+        "Press out and fire one shot on square 5."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 4,
+        "silver": 3.3,
+        "gold": 2.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 75
+      },
+      "safety": "Muzzle must stay pointed at the floor ahead of you, never at your legs or feet, during the regrip. Only manipulate a retention device if the holster allows it without your hand crossing the muzzle. Finger outside the guard until on target.",
+      "errors": [
+        "Muzzle sweeping the thighs during the regrip",
+        "Trying to regrip in the air and dropping the gun",
+        "Twisting the whole torso instead of the hip to reach the gun",
+        "Finger drifting into the guard during the regrip"
+      ],
+      "cue": "Muzzle down, regrip slow.",
+      "remedial": "c1-support-draw-aiwb",
+      "tags": [
+        "concealed",
+        "draw",
+        "weak-hand",
+        "garment",
+        "grid"
+      ]
+    },
+    {
+      "id": "c2-seated-chair",
+      "title": "Seated Draw at a Table",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "any",
+      "mode": "standard",
+      "start": "seated",
+      "equipment": [
+        "holster",
+        "cover-garment",
+        "chair"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at seated eye-to-chest height (~40 in / 102 cm)",
+        "angle": "square",
+        "position": "Sit in a chair facing the target with a table or desk edge in front of you, hands flat on the table."
+      },
+      "objective": "Draw from concealment while seated at a table (restaurant or booth) and fire one shot without muzzling your lap or the table edge.",
+      "steps": [
+        "At the beep, lean back slightly to open space between belly and table.",
+        "Clear the garment high; seated shirts bunch, so lift farther than standing.",
+        "Grip and extract straight up, higher than normal, before rotating.",
+        "Rotate only after the muzzle is above the tabletop; meet the support hand at the chest.",
+        "Press out over the table and fire one shot.",
+        "Follow through; reholster seated only if you can do it without muzzling your legs."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Never let the muzzle cross your legs or anyone seated beside you. Extract higher than normal before rotating. Stand to reholster if the seated angle forces a sweep.",
+      "errors": [
+        "Rotating too early and pointing the muzzle into the thighs",
+        "Short extraction jamming the muzzle against the table edge",
+        "Not leaning back, trapping the grip under the belly",
+        "Shirt re-falling because it was only cleared to belt height"
+      ],
+      "cue": "Lean back, lift high, then turn.",
+      "remedial": "c1-aiwb-first-hit",
+      "tags": [
+        "seated",
+        "concealed",
+        "draw",
+        "garment"
+      ]
+    },
+    {
+      "id": "c2-vehicle-seat",
+      "title": "Vehicle Seat Draw",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "grid",
+      "mode": "standard",
+      "start": "seated",
+      "equipment": [
+        "holster",
+        "cover-garment",
+        "chair"
+      ],
+      "setup": {
+        "distanceYd": 3,
+        "height": "Target center at seated eye height (~42 in / 107 cm)",
+        "angle": "left-45",
+        "position": "Sit in a chair angled 45 degrees to the target, as if in a driver's seat; hands at 10 and 2 on an imaginary wheel. A belt strap across the chest simulates a seatbelt if available."
+      },
+      "objective": "Draw from a seated vehicle position to a threat at the driver's window angle and hit square 5.",
+      "steps": [
+        "At the beep, strong hand clears the garment; the seatbelt stays on unless it blocks the gun.",
+        "If it blocks, support hand releases the belt and guides it past the gun hand.",
+        "Grip, extract high, and rotate toward the target keeping the muzzle above the dashboard line.",
+        "Press out with a turned torso; accept a compressed or one-hand shot if needed.",
+        "Fire one shot on square 5.",
+        "Follow through and scan both sides of the vehicle."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 3.2,
+        "silver": 2.6,
+        "gold": 2.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Never let the muzzle cross your legs or anyone in the car. Rotate only after the gun is clear of the holster and above your thighs. Practice only with an empty, verified-clear pistol.",
+      "errors": [
+        "Seatbelt trapping the gun hand",
+        "Muzzle sweeping the passenger side during rotation",
+        "Trying to fully extend and locking against the steering wheel line",
+        "Forgetting to scan after the shot"
+      ],
+      "cue": "Clear the belt, clear the legs.",
+      "remedial": "c2-seated-chair",
+      "tags": [
+        "seated",
+        "concealed",
+        "draw",
+        "position",
+        "grid"
+      ]
+    },
+    {
+      "id": "c2-off-the-x",
+      "title": "Draw Off the X",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "circle",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square with clear floor space of at least 2 steps on both sides; no furniture in the movement path."
+      },
+      "objective": "Take an explosive lateral step off the line of attack while drawing, and fire once the feet are planted.",
+      "steps": [
+        "Choose left or right before each rep and alternate sides.",
+        "At the beep, drive a hard lateral step while the hands clear the garment.",
+        "Complete the grip and extraction during the step; head stays level.",
+        "Plant, press out, and fire one shot in the circle.",
+        "Follow through, scan, and reset to the start mark.",
+        "Log which direction was slower."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.4,
+        "silver": 2,
+        "gold": 1.7
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 75
+      },
+      "safety": "Clear the floor of trip hazards. Keep the finger straight until the feet are planted and the sights are on target; the muzzle stays toward the target backstop throughout the step.",
+      "errors": [
+        "Crossing the feet on the first step",
+        "Drawing first, moving second (standing on the X)",
+        "Bobbing the head and chasing the sights",
+        "Firing while still moving before the sights settle"
+      ],
+      "cue": "Move first, gun follows.",
+      "remedial": "c1-aiwb-first-hit",
+      "tags": [
+        "movement",
+        "concealed",
+        "draw",
+        "circle"
+      ]
+    },
+    {
+      "id": "c2-retention-fence",
+      "title": "Retention Shooting With a Fence",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "any",
+      "mode": "standard",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 2,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square at arm's reach from the target wall. Set a strip of tape 3 ft in front of you as the attacker's position."
+      },
+      "objective": "At contact distance, fence with the support arm, draw to a compressed high-pec retention position, and fire two shots without extending.",
+      "steps": [
+        "At the beep, support arm snaps up in a fence: elbow high, forearm covering head and neck.",
+        "Strong hand clears the garment and draws with a full grip.",
+        "Rotate the gun at the pectoral with the muzzle level, wrist locked, elbow driven back.",
+        "Tuck the slide slightly outboard so it clears clothing and the body.",
+        "Fire two shots from retention; the support arm stays up and forward of the muzzle.",
+        "Push off or step back, then extend to a two-hand grip and scan."
+      ],
+      "reps": 6,
+      "shots": 2,
+      "par": {
+        "bronze": 1.8,
+        "silver": 1.5,
+        "gold": 1.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 75
+      },
+      "safety": "The support arm stays high and in front of your head; the muzzle stays level and never points at the fence arm. Rotate at the pectoral, not below it, so the muzzle never cants toward your own legs.",
+      "errors": [
+        "Support hand drifting down in front of the muzzle",
+        "Muzzle angled down toward the floor or legs",
+        "Gun pressed flat against the body (slide cannot cycle on a real gun)",
+        "Extending the gun into the attacker's reach"
+      ],
+      "cue": "Fence high, gun tight.",
+      "remedial": "c1-slow-concealed-draw",
+      "tags": [
+        "retention",
+        "compressed-ready",
+        "concealed",
+        "draw",
+        "strong-hand",
+        "pairs"
+      ]
+    },
+    {
+      "id": "c2-bag-draw",
+      "title": "Off-Body Bag Draw",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "grid",
+      "mode": "standard",
+      "start": "bag",
+      "equipment": [
+        "bag",
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square with a purpose-built carry bag worn cross-body or on the support shoulder, zipper closed, gun in the bag's dedicated holster."
+      },
+      "objective": "Access a pistol from a dedicated off-body carry bag and hit square 5 with one shot.",
+      "steps": [
+        "At the beep, support hand stabilizes the bag and pulls the zipper pull or opens the flap.",
+        "Strong hand enters the compartment and establishes a full firing grip on the holstered gun.",
+        "Support hand anchors the bag against the body as the gun extracts.",
+        "Rotate toward the target and meet the support hand at the chest.",
+        "Press out and fire one shot on square 5.",
+        "Follow through; reholster into the bag with the bag held still against the body."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 4,
+        "silver": 3.2,
+        "gold": 2.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Use only a bag with a dedicated compartment and a holster covering the trigger guard. Anchor the bag before extraction so the muzzle never swings toward your body. Keep nothing else in the gun compartment.",
+      "errors": [
+        "Bag swinging away as the gun extracts",
+        "Partial grip taken inside the bag",
+        "Zipper pull hard to find because it moves between reps",
+        "Extracting at an angle that points the muzzle into the torso"
+      ],
+      "cue": "Anchor the bag, then the gun.",
+      "remedial": "c1-pocket-draw",
+      "tags": [
+        "offbody",
+        "draw",
+        "concealed",
+        "grid"
+      ]
+    },
+    {
+      "id": "c2-verbal-command",
+      "title": "Verbal Command, Then Decide",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "any",
+      "mode": "decision",
+      "start": "compressed-ready",
+      "decision": {
+        "kind": "color",
+        "shoot": [
+          "green"
+        ],
+        "noShoot": [
+          "yellow"
+        ],
+        "noShootRate": 0.35,
+        "shots": 1
+      },
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square, gun drawn and held at compressed ready, finger straight. Phone placed where you can see the color cue in peripheral vision."
+      },
+      "objective": "Rehearse issuing a loud verbal command from a ready position and presenting only when the situation escalates to a lethal threat.",
+      "steps": [
+        "Color legend: GREEN = the threat is continuing and lethal, present and fire. YELLOW = threat not yet justified, issue the command and hold.",
+        "Before each rep, start at compressed ready with the finger straight.",
+        "At every cue, first shout the command: \"STOP! Back up!\"",
+        "On GREEN, present from compressed ready and fire one shot.",
+        "On YELLOW, stay at compressed ready, repeat the command, and scan; do not touch the trigger.",
+        "After each rep, breathe, scan, and reset. Follow your local law; this is not legal advice."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 1.6,
+        "silver": 1.3,
+        "gold": 1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "Finger stays straight along the frame on every yellow cue. This drill rehearses decision-making only; it does not define when force is lawful. Follow your local law; this is not legal advice.",
+      "errors": [
+        "Skipping the verbal command on green cues",
+        "Finger entering the guard on yellow cues",
+        "Anticipating green and pressing on yellow",
+        "Mumbling the command instead of projecting it"
+      ],
+      "cue": "Voice first, gun second.",
+      "remedial": null,
+      "tags": [
+        "verbal",
+        "decision",
+        "stress",
+        "compressed-ready",
+        "concealed"
+      ]
+    },
+    {
+      "id": "c2-no-shoot",
+      "title": "No-Shoot Recognition",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "grid",
+      "mode": "decision",
+      "start": "concealed",
+      "decision": {
+        "kind": "number",
+        "shoot": [
+          2,
+          5
+        ],
+        "noShoot": [
+          4,
+          6,
+          8
+        ],
+        "noShootRate": 0.35,
+        "shots": 1
+      },
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square in your carry setup, hands at your sides."
+      },
+      "objective": "Draw on every cue but fire only on threat squares, holding on bystander squares.",
+      "steps": [
+        "Legend: squares 2 and 5 are the threat. Squares 4, 6, and 8 are bystanders.",
+        "At the call, draw from concealment and present toward the called square.",
+        "On 2 or 5, fire one shot on that square.",
+        "On 4, 6, or 8, hold on target with the finger straight and say \"No shoot.\"",
+        "Recover to compressed ready and scan before resetting.",
+        "Any press on a bystander call counts as a no-shoot hit."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 2.4,
+        "silver": 2,
+        "gold": 1.7
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "safety": "The draw is the same on every call; the trigger decision happens only at the target. Finger stays straight until you have confirmed a threat square.",
+      "errors": [
+        "Prepping the trigger on the way out before confirming the square",
+        "Hesitating at the holster instead of drawing on every call",
+        "Firing on a bystander square out of momentum",
+        "Tunnel vision on the square without a scan afterward"
+      ],
+      "cue": "Draw always, press on confirm.",
+      "remedial": "c1-aiwb-first-hit",
+      "tags": [
+        "decision",
+        "concealed",
+        "draw",
+        "stress",
+        "grid"
+      ]
+    },
+    {
+      "id": "c2-reholster",
+      "title": "Reholster Discipline",
+      "track": "ccw",
+      "unit": "c2-contextual",
+      "target": "any",
+      "mode": "untimed",
+      "start": "concealed",
+      "equipment": [
+        "holster",
+        "cover-garment"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand square in your carry setup and daily clothes."
+      },
+      "objective": "Make a slow, deliberate, look-it-in reholster a non-negotiable habit after every rep.",
+      "steps": [
+        "Draw at moderate speed and fire one shot on target.",
+        "Recover to compressed ready, scan left and right, and take a breath.",
+        "Finger high on the frame, thumb on the back of the slide (striker guns) or hammer.",
+        "Support hand clears the garment fully above the holster mouth and holds it there.",
+        "Blade the hips (AIWB) and look the gun into the holster; stop if anything resists.",
+        "Seat the gun slowly, then drop the garment. Score a hit only if every step was clean."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 80,
+        "silver": 90,
+        "gold": 100
+      },
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Blade the hips on reholster; keep the garment, drawstrings, and fingers clear of the holster mouth. If you feel resistance, stop, withdraw the gun, and clear the obstruction. There is no reason to reholster fast.",
+      "errors": [
+        "Reholstering by feel without looking",
+        "Garment or drawstring caught in the holster mouth",
+        "Finger resting near the trigger guard on the way in",
+        "Hips pushed forward so the muzzle points at the femoral artery"
+      ],
+      "cue": "Look it in. Slow is safe.",
+      "remedial": null,
+      "tags": [
+        "concealed",
+        "garment",
+        "draw"
+      ]
+    },
+    {
+      "id": "r1-low-ready",
+      "title": "Low Ready to First Hit",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand in an athletic stance, stock in the shoulder pocket, muzzle depressed about 45 degrees below the target, safety on."
+      },
+      "objective": "Drive the rifle from low ready onto the target and break one shot with a consistent mount.",
+      "steps": [
+        "Stock stays in the shoulder pocket; support hand forward on the handguard.",
+        "At the beep, drive the muzzle up to the target with the support hand.",
+        "Bring the stock to your cheek, not your cheek down to the stock.",
+        "Thumb sweeps the safety off as the muzzle rises.",
+        "Fire one shot as the dot settles; safety back on after follow-through.",
+        "Return to low ready."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 1.3,
+        "silver": 1,
+        "gold": 0.8
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Stock slipping out of the shoulder pocket at low ready",
+        "Head ducking down to meet the stock",
+        "Safety off too late, after the dot is on target",
+        "Overswinging past the target and correcting back"
+      ],
+      "cue": "Muzzle up, cheek to stock.",
+      "remedial": "r1-mount-consistency",
+      "tags": [
+        "rifle",
+        "low-ready",
+        "speed"
+      ]
+    },
+    {
+      "id": "r1-high-ready",
+      "title": "High Ready to First Hit",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "grid",
+      "mode": "standard",
+      "start": "high-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand in an athletic stance, stock in the shoulder pocket, muzzle just below the line of sight to the target so you can see the hands, safety on."
+      },
+      "objective": "Present from high ready to square 2 with a single clean shot.",
+      "steps": [
+        "Hold the muzzle just under the line of sight, stock in the pocket.",
+        "At the beep, lower the stock-hand elbow slightly and lift the optic into your eye line.",
+        "Safety off as the dot enters the target.",
+        "Fire one shot on square 2.",
+        "Follow through; safety on; return to high ready.",
+        "Vary grid squares on later reps if the app allows."
+      ],
+      "reps": 8,
+      "shots": 1,
+      "par": {
+        "bronze": 1.2,
+        "silver": 0.95,
+        "gold": 0.75
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 85
+      },
+      "errors": [
+        "Muzzle held so high it blocks the view of the threat's hands",
+        "Stock leaving the shoulder at high ready",
+        "Firing as the dot passes through the square instead of stopping in it",
+        "Safety left on under speed"
+      ],
+      "cue": "Lift the dot, stop, press.",
+      "remedial": "r1-low-ready",
+      "tags": [
+        "rifle",
+        "high-ready",
+        "speed",
+        "grid"
+      ]
+    },
+    {
+      "id": "r1-mount-consistency",
+      "title": "Blind Mount Check",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "any",
+      "mode": "untimed",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand in your rifle stance at low ready, target directly in front of you."
+      },
+      "objective": "Build a mount that places the optic or sights in the eye without adjustment.",
+      "steps": [
+        "Look at the target, then close your eyes.",
+        "Mount the rifle: stock to the shoulder pocket, cheek to the same spot on the stock.",
+        "Open your eyes without moving the head or rifle.",
+        "Score a hit if the dot or aligned sights are in the eye and on target without adjustment.",
+        "Dry-fire one shot, follow through, and return to low ready.",
+        "Note the direction of any misalignment and adjust stance, not the head."
+      ],
+      "reps": 10,
+      "shots": 1,
+      "par": null,
+      "scoring": "accuracy",
+      "accuracyTiers": {
+        "bronze": 70,
+        "silver": 85,
+        "gold": 95
+      },
+      "pass": {
+        "accuracy": 70
+      },
+      "errors": [
+        "Cheek weld landing in a different spot each rep",
+        "Stock placed on the arm or collarbone instead of the pocket",
+        "Fixing a bad mount by craning the neck",
+        "Opening the eyes and adjusting before scoring"
+      ],
+      "cue": "Same cheek, same spot.",
+      "remedial": null,
+      "tags": [
+        "rifle",
+        "sight",
+        "position",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "r1-offhand",
+      "title": "Offhand Precision",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "circle",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Standing unsupported, feet shoulder-width, slightly bladed, weight forward on the balls of the feet."
+      },
+      "objective": "Deliver a precise standing unsupported shot into a small circle with minimal wobble.",
+      "steps": [
+        "Use your smallest circle (or the center ring) as the aiming area.",
+        "At the beep, mount from low ready with the support hand pulling the rifle into the shoulder.",
+        "Lean slightly into the rifle; shoulders over the hips, nose over toes.",
+        "Accept the arc of movement and press straight back as the dot rides through the center.",
+        "Hold the trigger to the rear and call the shot.",
+        "Safety on; return to low ready."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 1.7,
+        "silver": 1.4,
+        "gold": 1.1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Leaning back from the rifle (bent-back stance)",
+        "Chasing the wobble and jerking the trigger",
+        "Support elbow flared and fighting the rifle",
+        "Holding breath too long and fatiguing"
+      ],
+      "cue": "Lean in, accept the wobble.",
+      "remedial": "r1-mount-consistency",
+      "tags": [
+        "rifle",
+        "position",
+        "accuracy",
+        "trigger",
+        "circle"
+      ]
+    },
+    {
+      "id": "r1-kneeling",
+      "title": "Standing to Kneeling",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "circle",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at kneeling chest height (~32 in / 81 cm)",
+        "angle": "square",
+        "position": "Stand at low ready on a padded or carpeted surface with room to drop to a knee."
+      },
+      "objective": "Drop into a stable kneeling position and fire one precise shot.",
+      "steps": [
+        "At the beep, step forward with the support foot and drop the strong knee to the ground.",
+        "Mount as the knee lands; safety off only when the dot is on target.",
+        "Support elbow rests just forward of the support knee (bone on bone, not point on point).",
+        "Sit back onto the strong heel for a stable base.",
+        "Fire one shot in the circle; follow through; safety on.",
+        "Stand up with the muzzle still oriented at the target, then return to low ready."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.4,
+        "silver": 2,
+        "gold": 1.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Keep the muzzle oriented at the target while moving up and down; safety on before standing. Clear the floor of anything you could kneel on.",
+      "errors": [
+        "Elbow point resting on kneecap point (unstable)",
+        "Muzzle dipping toward the floor during the drop",
+        "Safety off before the knee is down",
+        "Rushing the shot before the position settles"
+      ],
+      "cue": "Knee down, elbow set, press.",
+      "remedial": "r1-offhand",
+      "tags": [
+        "rifle",
+        "kneeling",
+        "position",
+        "circle"
+      ]
+    },
+    {
+      "id": "r1-grid-transitions",
+      "title": "Rifle Grid Transitions",
+      "track": "rifle",
+      "unit": "r1-rifle-fundamentals",
+      "target": "grid",
+      "mode": "sequence",
+      "sequence": [
+        1,
+        3,
+        7,
+        9,
+        5
+      ],
+      "start": "low-ready",
+      "equipment": [
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Stand at low ready, athletic stance, facing the grid."
+      },
+      "objective": "Drive the rifle between grid corners with the body, stopping the dot precisely on each square.",
+      "steps": [
+        "Sequence: 1, 3, 7, 9, 5 (one shot each).",
+        "At the beep, mount on square 1 and fire.",
+        "Eyes move to the next square first; the rifle follows.",
+        "Turn from the hips and knees, keeping the mount locked to the head.",
+        "Stop the dot fully before each press, then drive to the next square.",
+        "Finish on 5, follow through, safety on."
+      ],
+      "reps": 5,
+      "shots": 5,
+      "par": {
+        "bronze": 3.2,
+        "silver": 2.6,
+        "gold": 2.1
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "errors": [
+        "Swinging with the arms and breaking the mount",
+        "Overdriving past each square",
+        "Eyes following the dot instead of leading it",
+        "Pressing while the dot is still moving"
+      ],
+      "cue": "Eyes lead, hips drive.",
+      "remedial": "r1-high-ready",
+      "tags": [
+        "rifle",
+        "grid",
+        "transition",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "r2-emergency-reload",
+      "title": "Emergency Reload Plus One",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "any",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle mounted on target, bolt locked to the rear on an empty magazine, loaded training magazine in your primary mag pouch."
+      },
+      "objective": "Recognize an empty rifle, perform a fast emergency reload, and fire one shot.",
+      "steps": [
+        "Start mounted, bolt locked back on an empty magazine.",
+        "At the beep, keep the stock in the shoulder and bring the rifle into your workspace.",
+        "Press the mag release and let the empty fall while the support hand strips a fresh mag.",
+        "Index the new mag, insert, and tug to confirm seated.",
+        "Slap the bolt release (or hit it with the thumb) and remount.",
+        "Fire one shot."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 3.5,
+        "silver": 2.8,
+        "gold": 2.3
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Use only empty or dummy-round training magazines. Verify no live ammunition is in the room before starting.",
+      "errors": [
+        "Taking the stock out of the shoulder",
+        "Looking down at the mag pouch",
+        "Not seating the magazine fully (no tug test)",
+        "Riding the charging handle forward instead of letting it go"
+      ],
+      "cue": "Mag out, mag in, bolt home.",
+      "remedial": null,
+      "tags": [
+        "rifle",
+        "reload",
+        "speed"
+      ]
+    },
+    {
+      "id": "r2-retention-reload",
+      "title": "Retention Reload",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "grid",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle mounted on target with a partially loaded training mag seated, a full training mag in the pouch, and a dump pouch or pocket available."
+      },
+      "objective": "Top off during a lull by swapping a partial magazine for a full one, retaining the partial, then firing on square 5.",
+      "steps": [
+        "At the beep, bring the rifle into your workspace, stock still in the shoulder.",
+        "Support hand draws the full mag and brings it alongside the seated mag.",
+        "Press the mag release, catch the partial between fingers, and insert the full mag.",
+        "Tug to confirm seated.",
+        "Stow the partial in the dump pouch or pocket, not the primary pouch.",
+        "Remount and fire one shot on square 5."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 5,
+        "silver": 4.2,
+        "gold": 3.5
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Use only empty or dummy-round training magazines. Keep the muzzle oriented at the target throughout the reload.",
+      "errors": [
+        "Dropping both mags during the swap",
+        "Stowing the partial where it gets mixed with full mags",
+        "Taking the eyes and muzzle off the threat area",
+        "Skipping the tug test on the new mag"
+      ],
+      "cue": "Full in before partial away.",
+      "remedial": "r2-emergency-reload",
+      "tags": [
+        "rifle",
+        "reload",
+        "grid"
+      ]
+    },
+    {
+      "id": "r2-tap-rack",
+      "title": "Tap-Rack-Bang (Rifle)",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "circle",
+      "mode": "standard",
+      "start": "extended",
+      "equipment": [
+        "training-mag",
+        "dummy-rounds"
+      ],
+      "setup": {
+        "distanceYd": 7,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle mounted on target with a training magazine loaded with dummy rounds, a dummy round chambered."
+      },
+      "objective": "Clear a failure-to-fire with an immediate action drill and fire the follow-up shot.",
+      "steps": [
+        "At the beep, press the trigger. Click: that is your malfunction.",
+        "TAP: support hand drives the magazine up hard to seat it.",
+        "RACK: pull the charging handle fully to the rear and release.",
+        "Reacquire the dot in the circle.",
+        "BANG: press again (reassess the target first).",
+        "Follow through, safety on, and reload dummy rounds as needed."
+      ],
+      "reps": 5,
+      "shots": 1,
+      "par": {
+        "bronze": 2.4,
+        "silver": 1.9,
+        "gold": 1.6
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "Inspect every dummy round before starting; no live ammunition in the room. Ejected dummies go on the floor; collect them only after the drill.",
+      "errors": [
+        "Short-stroking the charging handle",
+        "Diagnosing instead of reacting",
+        "Tapping the mag half-heartedly",
+        "Breaking the mount and losing the dot"
+      ],
+      "cue": "Click? Tap, rack, reassess.",
+      "remedial": "r2-emergency-reload",
+      "tags": [
+        "rifle",
+        "malfunction",
+        "circle"
+      ]
+    },
+    {
+      "id": "r2-rifle-to-pistol",
+      "title": "Rifle-to-Pistol Transition",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "any",
+      "mode": "standard",
+      "start": "sling",
+      "equipment": [
+        "sling",
+        "holster"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle on a two-point sling adjusted so it hangs muzzle-down and clear of the holster; rifle mounted on target; pistol holstered."
+      },
+      "objective": "Transition from a dead rifle to the pistol and fire one shot.",
+      "steps": [
+        "Start mounted on target with the rifle.",
+        "At the beep, press the rifle trigger: it clicks dead.",
+        "Support hand drives the rifle down and inboard while the strong hand goes to the pistol.",
+        "Draw the pistol while the rifle settles on the sling.",
+        "Support hand meets the pistol at the chest; press out and fire one shot.",
+        "Follow through, reholster the pistol, and remount the rifle."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": {
+        "bronze": 2.8,
+        "silver": 2.3,
+        "gold": 1.9
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "A sling is required; never drop an unslung rifle. Adjust the sling so the released rifle hangs muzzle-down and does not cover your feet or the holster. Reholster the pistol before handling the rifle again.",
+      "errors": [
+        "Letting the rifle swing into the draw path",
+        "Trying to fix the rifle instead of transitioning",
+        "Rifle muzzle sweeping the feet when released",
+        "Slow pistol grip because the hand passes over rifle gear"
+      ],
+      "cue": "Rifle down, pistol out.",
+      "remedial": null,
+      "tags": [
+        "rifle",
+        "transition",
+        "draw",
+        "strong-hand"
+      ]
+    },
+    {
+      "id": "r2-transition-grid",
+      "title": "Transition on the Grid",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "grid",
+      "mode": "sequence",
+      "sequence": [
+        1,
+        3,
+        5
+      ],
+      "start": "low-ready",
+      "equipment": [
+        "sling",
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 5,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle on a two-point sling at low ready, pistol holstered, facing the grid."
+      },
+      "objective": "Fire the rifle on two squares, go dead, and finish the string with the pistol.",
+      "steps": [
+        "Sequence: rifle on 1, rifle on 3, then pistol on 5.",
+        "At the beep, mount and fire on square 1, then drive to 3 and fire.",
+        "On square 3, the next press is a dead click: transition immediately.",
+        "Drive the rifle down on the sling and draw the pistol.",
+        "Fire the pistol on square 5.",
+        "Follow through, reholster, and return the rifle to low ready."
+      ],
+      "reps": 5,
+      "shots": 3,
+      "par": {
+        "bronze": 4.8,
+        "silver": 3.9,
+        "gold": 3.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "A sling is required. The released rifle must hang muzzle-down and clear of the holster and feet. Reholster before touching the rifle again.",
+      "errors": [
+        "Pausing after the dead click to diagnose",
+        "Rushing the rifle shots to save time for the transition",
+        "Pistol presented to the wrong square",
+        "Rifle swinging into the holster during the draw"
+      ],
+      "cue": "Click, drop, draw.",
+      "remedial": "r2-rifle-to-pistol",
+      "tags": [
+        "rifle",
+        "transition",
+        "grid",
+        "draw"
+      ]
+    },
+    {
+      "id": "r2-dead-rifle-close",
+      "title": "Dead Rifle at Close Range",
+      "track": "rifle",
+      "unit": "r2-rifle-manipulation",
+      "target": "any",
+      "mode": "standard",
+      "start": "low-ready",
+      "equipment": [
+        "sling",
+        "holster",
+        "reset-trigger"
+      ],
+      "setup": {
+        "distanceYd": 3,
+        "height": "Target center at chest height (~48 in / 122 cm)",
+        "angle": "square",
+        "position": "Rifle on a two-point sling at low ready, pistol holstered, target close."
+      },
+      "objective": "Decide instantly that a close threat plus a rifle failure means pistol, not a malfunction clearance, and fire a pair.",
+      "steps": [
+        "At the beep, mount the rifle and press: it clicks dead.",
+        "Do not tap-rack; at 3 yards the pistol is faster.",
+        "Drive the rifle down and inboard while drawing the pistol.",
+        "Fire two shots with the pistol.",
+        "Follow through and scan.",
+        "Reholster, then clear the rifle's simulated malfunction at your own pace."
+      ],
+      "reps": 5,
+      "shots": 2,
+      "par": {
+        "bronze": 3.2,
+        "silver": 2.6,
+        "gold": 2.2
+      },
+      "scoring": "time",
+      "pass": {
+        "accuracy": 80
+      },
+      "safety": "A sling is required. The released rifle must hang muzzle-down and clear of the holster and feet. Confirm both weapons are unloaded and no live ammunition is in the room.",
+      "errors": [
+        "Instinctively tap-racking at close range",
+        "Rifle not fully released before the draw",
+        "Rushed second shot off the target",
+        "Muzzle of the released rifle swinging across the legs"
+      ],
+      "cue": "Close and dead? Go pistol.",
+      "remedial": "r2-rifle-to-pistol",
+      "tags": [
+        "rifle",
+        "transition",
+        "malfunction",
+        "decision",
+        "pairs"
+      ]
+    }
+  ],
+  "manCard": {
+    "title": "Man Card",
+    "attribution": "Adapted from the Achilles Heel Tactical “Man Card” standard. Not affiliated with or endorsed by Achilles Heel Tactical.",
+    "laserNote": "Adapted for laser target: the original standards are live-fire at 25 yards on a C-zone. Here, a hit is a laser hit inside your target's hit zone (the circle, or the called square on the grid), with the same par times.",
+    "rules": [
+      "Cold start: no warmup or drill of any kind earlier in this session.",
+      "One attempt per iteration. No redo, no do-over string.",
+      "Any miss or any time over par is a full fail of the card.",
+      "Time runs from the start beep to your hit. Mic detection or an honest tap."
+    ],
+    "unlock": {
+      "bossTier": "silver",
+      "units": [
+        "p1-fundamentals",
+        "p2-trigger",
+        "p3-presentation",
+        "p4-reloads",
+        "p5-transitions",
+        "p6-movement",
+        "p7-stress"
+      ],
+      "ifTrack": {
+        "rifle": [
+          "r1-rifle-fundamentals",
+          "r2-rifle-manipulation"
+        ]
+      }
+    },
+    "coldStartMinutes": 30,
+    "carryVariant": {
+      "parAdd": 0.5,
+      "label": "Carry variant",
+      "summary": "Holster iterations are drawn from concealment under a cover garment, par +0.5s. Tracked separately from the standard card.",
+      "startText": "Concealed under a cover garment, hands natural."
+    },
+    "xp": 500,
+    "short": {
+      "id": "mancard-short",
+      "title": "Short Card",
+      "summary": "5 single-shot iterations (6 with the optional rifle-to-pistol transition).",
+      "iterations": [
+        {
+          "id": "s1",
+          "title": "Pistol · low ready",
+          "weapon": "pistol",
+          "start": "low-ready",
+          "shots": 1,
+          "par": 1,
+          "instructions": "Pistol at low ready, finger off the trigger. On the beep, one hit."
+        },
+        {
+          "id": "s2",
+          "title": "Pistol · compressed ready",
+          "weapon": "pistol",
+          "start": "compressed-ready",
+          "shots": 1,
+          "par": 1,
+          "instructions": "Pistol at compressed ready, close to the chest. On the beep, press out, one hit."
+        },
+        {
+          "id": "s3",
+          "title": "Pistol · holster draw",
+          "weapon": "pistol",
+          "start": "holster",
+          "shots": 1,
+          "par": 1.5,
+          "carryEligible": true,
+          "instructions": "Hands natural, pistol holstered. On the beep, draw, one hit."
+        },
+        {
+          "id": "s4",
+          "title": "Rifle · low ready",
+          "weapon": "rifle",
+          "start": "low-ready",
+          "shots": 1,
+          "par": 1,
+          "instructions": "Rifle mounted at low ready, safety on. On the beep, one hit."
+        },
+        {
+          "id": "s5",
+          "title": "Rifle · high ready",
+          "weapon": "rifle",
+          "start": "high-ready",
+          "shots": 1,
+          "par": 1,
+          "instructions": "Rifle at high ready, safety on. On the beep, one hit."
+        },
+        {
+          "id": "s6",
+          "title": "Rifle to pistol transition",
+          "weapon": "rifle",
+          "start": "extended",
+          "shots": 1,
+          "par": 2.5,
+          "optional": true,
+          "instructions": "Rifle on target, simulated dead-trigger. On the beep, transition to pistol, one hit."
+        }
+      ]
+    },
+    "long": {
+      "id": "mancard-long",
+      "title": "Long Card",
+      "requires": "mancard-short",
+      "summary": "14 iterations adding one-handed shooting, reloads, a tac reload and transitions with tighter combined pars. These standards are placeholders modeled on the short card: edit them in drills.json to match the published standard you train to.",
+      "iterations": [
+        {
+          "id": "l1",
+          "title": "Pistol · low ready",
+          "weapon": "pistol",
+          "start": "low-ready",
+          "shots": 1,
+          "par": 1
+        },
+        {
+          "id": "l2",
+          "title": "Pistol · compressed ready",
+          "weapon": "pistol",
+          "start": "compressed-ready",
+          "shots": 1,
+          "par": 1
+        },
+        {
+          "id": "l3",
+          "title": "Pistol · holster draw",
+          "weapon": "pistol",
+          "start": "holster",
+          "shots": 1,
+          "par": 1.5,
+          "carryEligible": true
+        },
+        {
+          "id": "l4",
+          "title": "Pistol · draw, strong hand only",
+          "weapon": "pistol",
+          "start": "holster",
+          "shots": 1,
+          "par": 1.9,
+          "carryEligible": true
+        },
+        {
+          "id": "l5",
+          "title": "Pistol · low ready, support hand only",
+          "weapon": "pistol",
+          "start": "low-ready",
+          "shots": 1,
+          "par": 1.4
+        },
+        {
+          "id": "l6",
+          "title": "Pistol · slide-lock reload + 1",
+          "weapon": "pistol",
+          "start": "extended",
+          "shots": 1,
+          "par": 2.3,
+          "instructions": "Gun on target at slide lock, training mag on belt. On the beep, reload, one hit."
+        },
+        {
+          "id": "l7",
+          "title": "Pistol · tac reload + 1",
+          "weapon": "pistol",
+          "start": "extended",
+          "shots": 1,
+          "par": 3,
+          "instructions": "Gun on target, partial training mag in gun. On the beep, tac reload (retain the partial), one hit."
+        },
+        {
+          "id": "l8",
+          "title": "Pistol · draw, tap-rack + 1",
+          "weapon": "pistol",
+          "start": "holster",
+          "shots": 1,
+          "par": 2.6,
+          "carryEligible": true,
+          "instructions": "Dead trigger on first press (empty chamber). On the beep, draw, press, tap-rack, one hit."
+        },
+        {
+          "id": "l9",
+          "title": "Rifle · low ready",
+          "weapon": "rifle",
+          "start": "low-ready",
+          "shots": 1,
+          "par": 1
+        },
+        {
+          "id": "l10",
+          "title": "Rifle · high ready",
+          "weapon": "rifle",
+          "start": "high-ready",
+          "shots": 1,
+          "par": 1
+        },
+        {
+          "id": "l11",
+          "title": "Rifle · emergency reload + 1",
+          "weapon": "rifle",
+          "start": "extended",
+          "shots": 1,
+          "par": 2.8,
+          "instructions": "Rifle on target, bolt locked back. On the beep, reload, one hit."
+        },
+        {
+          "id": "l12",
+          "title": "Rifle · tac reload + 1",
+          "weapon": "rifle",
+          "start": "extended",
+          "shots": 1,
+          "par": 3.3
+        },
+        {
+          "id": "l13",
+          "title": "Rifle to pistol transition",
+          "weapon": "rifle",
+          "start": "extended",
+          "shots": 1,
+          "par": 2.3
+        },
+        {
+          "id": "l14",
+          "title": "Rifle 1, reload, 1, transition, pistol 1",
+          "weapon": "rifle",
+          "start": "low-ready",
+          "shots": 3,
+          "par": 6,
+          "instructions": "Rifle at low ready, 1 round in the rifle (dummy mag set up to lock back). On the beep: rifle hit, emergency reload, rifle hit, simulated failure, transition, pistol hit."
+        }
+      ]
+    }
+  },
+  "analysis": {
+    "pairs": [
+      {
+        "a": "weak-hand",
+        "b": "strong-hand",
+        "label": "weak-hand work",
+        "compare": "strong-hand work"
+      },
+      {
+        "a": "weak-hand",
+        "b": "freestyle",
+        "label": "support-hand-only shooting",
+        "compare": "two-hand shooting"
+      },
+      {
+        "a": "concealed",
+        "b": "open-carry",
+        "label": "concealed draw",
+        "compare": "open-carry draw"
+      },
+      {
+        "a": "draw",
+        "b": "low-ready",
+        "label": "draw",
+        "compare": "low-ready presentation"
+      },
+      {
+        "a": "seated",
+        "b": "draw",
+        "label": "seated draw",
+        "compare": "standing draw"
+      },
+      {
+        "a": "movement",
+        "b": "freestyle",
+        "label": "shooting on the move",
+        "compare": "static shooting"
+      },
+      {
+        "a": "decision",
+        "b": "low-ready",
+        "label": "shoot/no-shoot decisions",
+        "compare": "simple presentations"
+      },
+      {
+        "a": "reload",
+        "b": "draw",
+        "label": "reloads",
+        "compare": "draws"
+      },
+      {
+        "a": "fatigue",
+        "b": "freestyle",
+        "label": "shooting under fatigue",
+        "compare": "rested shooting"
+      }
+    ]
+  }
+}

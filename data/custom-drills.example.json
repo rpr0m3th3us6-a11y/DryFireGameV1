@@ -1,0 +1,39 @@
+{
+  "drills": [
+    {
+      "id": "x-doorway-pie",
+      "title": "Doorway Slice (Custom Example)",
+      "track": "pistol",
+      "unit": "p6-movement",
+      "target": "any",
+      "mode": "standard",
+      "start": "compressed-ready",
+      "equipment": ["barricade"],
+      "setup": {
+        "distanceYd": 4,
+        "height": "Target center at chest height",
+        "angle": "barricade-left",
+        "position": "Stand one step back from a doorframe, target visible only once you slice past the edge."
+      },
+      "objective": "Slice a doorway at compressed ready and break a clean shot the moment the target clears the frame.",
+      "steps": [
+        "Start at compressed ready, one step back from the frame.",
+        "On the beep, lateral-step to open the angle; muzzle leads your eyes.",
+        "Extend as the target clears the frame and press one shot.",
+        "Hold follow-through, then return to compressed ready."
+      ],
+      "reps": 6,
+      "shots": 1,
+      "par": { "bronze": 2.2, "silver": 1.8, "gold": 1.5 },
+      "scoring": "time",
+      "pass": { "accuracy": 85 },
+      "errors": ["Crowding the frame", "Extending before the target is visible", "Stopping the feet to shoot"],
+      "cue": "Slice, see, press.",
+      "remedial": null,
+      "tags": ["movement", "barricade", "compressed-ready"]
+    }
+  ],
+  "levels": [
+    { "unit": "p6-movement", "level": { "id": "p6-custom", "title": "Custom · Doorways", "drills": ["x-doorway-pie"] } }
+  ]
+}
