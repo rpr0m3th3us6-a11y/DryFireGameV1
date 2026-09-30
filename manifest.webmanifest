@@ -1,19 +1,42 @@
 {
-  "name": "Dry-Fire Trainer",
-  "short_name": "Dry-Fire",
+  "name": "DryFire Trainer",
+  "short_name": "DryFire Trainer",
   "description": "Offline, gamified dry-fire training for laser targets.",
-  "id": "./",
-  "start_url": "./#/home",
+  "id": "./?app=dryfire-trainer",
+  "start_url": "./?app=dryfire-trainer#/home",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#0b0d10",
   "theme_color": "#0b0d10",
-  "categories": ["sports", "education", "fitness"],
+  "categories": [
+    "sports",
+    "education",
+    "fitness"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

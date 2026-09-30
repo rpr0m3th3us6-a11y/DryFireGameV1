@@ -1,6 +1,6 @@
 // Service worker: precache the whole app, serve cache-first, work fully offline.
 // Bump VERSION whenever any file changes so clients pick up the update.
-const VERSION = 'dryfire-v1.0.0';
+const VERSION = 'dryfire-v1.0.1';
 const ASSETS = [
   './', './index.html', './manifest.webmanifest', './css/app.css',
   './js/app.js', './js/db.js', './js/content.js', './js/progress.js', './js/scoring.js', './js/audio.js',
